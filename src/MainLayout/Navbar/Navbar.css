@@ -1,0 +1,48 @@
+ul a.active {
+    color: #04a44f;
+    /* background-color: #04a44f; */
+    text-decoration: underline;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font: medium;
+
+}
+
+.customBtn {
+    color: white;
+    background-color: #04a44f;
+    overflow: hidden;
+    padding: 1rem 2rem;
+    position: relative;
+    text-decoration: none;
+    transition: 0.4s transform ease-in-out;
+    will-change: transform;
+    z-index: 0;
+}
+
+.customBtn::after {
+    background-color: #d2f34c;
+    border-radius: 3rem;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-100%, 0) rotate(10deg);
+    transform-origin: top left;
+    transition: 0.4s transform ease-out;
+    will-change: transform;
+    z-index: -1;
+}
+
+.customBtn:hover::after {
+    transform: translate(0, 0);
+}
+
+.customBtn:hover {
+    color: black;
+    transform: scale(1.05);
+    will-change: transform;
+}

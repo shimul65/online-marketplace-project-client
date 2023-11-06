@@ -1,9 +1,9 @@
-
+import { Button } from "@material-tailwind/react";
 
 const Register = () => {
     return (
         <div>
-            Register
+            <Button>Register</Button>;
         </div>
     );
 };
