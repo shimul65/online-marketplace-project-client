@@ -12,7 +12,9 @@ const Home = () => {
                 <Trusted></Trusted>
             </div>
             <Company></Company>
-            <Question></Question>
+            <div className="container mx-auto">
+                <Question></Question>
+            </div>
 
         </div>
     );
