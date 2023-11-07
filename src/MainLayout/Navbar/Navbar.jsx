@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../../public/logo_04.png'
+import banner1 from '../../assets/banner-bg-3.png'
 import './Navbar.css'
 
 const Navbar = () => {
@@ -21,26 +22,27 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar font-semibold py-3">
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                    </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <div className="sticky -top-4 z-50" style={{ backgroundImage: `url(${banner1})`, backgroundSize: '100% 100%' }}>
+            <div className="navbar container mx-auto font-semibold pt-6 pb-3">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        </label>
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                            {navLinks}
+                        </ul>
+                    </div>
+                    <Link to='/' ><img className='w-[150px]' src={logo} alt="" /></Link>
+                </div>
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="flex justify-center items-center gap-6 px-1">
                         {navLinks}
                     </ul>
                 </div>
-                <Link to='/' ><img className='w-[150px]' src={logo} alt="" /></Link>
-            </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="flex justify-center items-center gap-6 px-1">
-                    {navLinks}
-                </ul>
-            </div>
 
-            <div className="navbar-end">
-                {/* {
+                <div className="navbar-end">
+                    {/* {
             user ?
                 <div className="dropdown dropdown-end ">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -69,9 +71,10 @@ const Navbar = () => {
                     <button className="ctrl-standard  fx-sliderIn btn rounded-full bg-black hover:text-black text-xs md:text-base font-medium md:font-extrabold text-[#FFF] px-7 hover:border-black">LOG IN</button>
                 </Link>
         } */}
-                <Link to='/login'>
-                    <button className="customBtn rounded-full hover:text-white">LOG IN</button>
-                </Link>
+                    <Link to='/login'>
+                        <button className="customBtn rounded-full hover:text-white">LOG IN</button>
+                    </Link>
+                </div>
             </div>
         </div>
     );

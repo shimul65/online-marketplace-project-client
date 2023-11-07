@@ -11,20 +11,20 @@ const JobGuides = () => {
         <div className='mb-20'>
             <div className="text-left pt-6 mb-16 relative">
                 <h1 className="text-6xl font-bold ml-5">Job Guides</h1>
-                <div className='flex items-center gap-2 text-[#04a44f] absolute right-10 top-[50%] hover:scale-105 ease-in-out duration-300'>
+                <div className='flex items-center gap-2 text-[#04a44f] absolute md:right-10 md:top-[50%] mt-4 ml-4 md:mt-0 md:ml-0 hover:scale-105 ease-in-out duration-300'>
                     <p className='underline text-lg'>Explore More</p>
                     <div className='text-xl hover:scale-125 hover:rotate-[360deg] ease-in-out duration-500 '>
                         <VscChevronRight></VscChevronRight>
                     </div>
                 </div>
             </div>
-            <div className='flex justify-around items-center gap-6'>
+            <div className='flex flex-col mx-2 md:mx-0 md:flex-row justify-around items-center gap-6'>
                 <div className="card card-compact shadow-xl h-[500px] w-full relative overflow-hidden " >
                     <div
                         className="absolute inset-0 bg-cover bg-center ease-in-out duration-300 hover:scale-105  "
                         style={{ backgroundImage: `url(${jobGuide1})`, backgroundSize: '100% 100%', }}
                     ></div>
-                    <div className="card-body border mt-[73%] bg-white rounded-b-2xl z-10">
+                    <div className="card-body border mt-[73%] md:mt-[100%] lg:mt-[73%] bg-white rounded-b-2xl z-10">
                         <div className="flex  flex-col gap-3 ">
                             <p>
                                 Featured - 18 Jul 2023
@@ -42,7 +42,7 @@ const JobGuides = () => {
                         className="absolute inset-0 bg-cover bg-center ease-in-out duration-300 hover:scale-105  "
                         style={{ backgroundImage: `url(${jobGuide2})`, backgroundSize: '100% 100%', }}
                     ></div>
-                    <div className="card-body border mt-[73%] bg-white rounded-b-2xl z-10">
+                    <div className="card-body border mt-[73%] md:mt-[100%] lg:mt-[73%] bg-white rounded-b-2xl z-10">
                         <div className="flex  flex-col gap-3 ">
                             <p>
                                 Featured - 28 Oct 2023
@@ -60,7 +60,7 @@ const JobGuides = () => {
                         className="absolute inset-0 bg-cover bg-center ease-in-out duration-300 hover:scale-105  "
                         style={{ backgroundImage: `url(${jobGuide1})`, backgroundSize: '100% 100%', }}
                     ></div>
-                    <div className="card-body border mt-[73%] bg-white rounded-b-2xl z-10">
+                    <div className="card-body border mt-[73%] md:mt-[100%] lg:mt-[73%] bg-white rounded-b-2xl z-10">
                         <div className="flex  flex-col gap-3 ">
                             <p>
                                 Featured - 28 Oct 2023

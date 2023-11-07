@@ -6,18 +6,18 @@ import { VscChevronRight } from 'react-icons/vsc';
 
 const Company = () => {
     return (
-        <div className="bg-[#eff6f3] py-24 mt-8">
+        <div className="md:bg-[#eff6f3] py-24 mt-8">
             <div className="container mx-auto" >
                 <div className="text-left mb-16 relative">
-                    <h1 className="text-6xl font-bold">Top Company</h1>
-                    <div className='flex items-center gap-2 text-[#04a44f] absolute right-10 top-[50%] hover:scale-105 ease-in-out duration-300'>
+                    <h1 className="text-6xl font-bold ml-2">Top Company</h1>
+                    <div className='flex items-center gap-2 text-[#04a44f] absolute md:right-10 md:top-[50%] mt-4 ml-4 md:mt-0 md:ml-0 hover:scale-105 ease-in-out duration-300'>
                         <p className='underline text-lg'>Explore More</p>
                         <div className='text-xl hover:scale-125 hover:rotate-[360deg] ease-in-out duration-500 '>
                             <VscChevronRight></VscChevronRight>
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 justify-items-center lg:grid-cols-4 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-4 gap-5 mx-3 md:mx-0">
                     <div className="card border-2 drop-shadow-xl w-full ">
                         <figure className="px-6 pt-8">
                             <img src={media1} alt="media" className="rounded-xl w-24 " />

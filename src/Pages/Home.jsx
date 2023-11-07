@@ -8,8 +8,8 @@ import Trusted from "../Components/Trusted/Trusted";
 const Home = () => {
     return (
         <div>
+            <Banner></Banner>
             <div className="container mx-auto">
-                <Banner></Banner>
                 <Trusted></Trusted>
             </div>
             <div className="container mx-auto">

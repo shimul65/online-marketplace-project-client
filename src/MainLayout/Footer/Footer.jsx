@@ -4,18 +4,20 @@ import { PiWhatsappLogoLight } from 'react-icons/pi';
 import { PiFacebookLogoThin } from 'react-icons/pi';
 import { PiInstagramLogoLight } from 'react-icons/pi';
 import { PiTwitterLogoThin } from 'react-icons/pi';
+import banner1 from '../../assets/banner-bg-3.png'
+
 const Footer = () => {
     return (
-        <footer className="bg-[#eff6f3]">
-            <div className="container mx-auto py-5 lg:pt-16">
+        <footer className="bg-[#eff6f3]" style={{ backgroundImage: `url(${banner1})`, backgroundSize: '100% 100%' }}>
+            <div className="container mx-auto pt-10 lg:pt-16">
                 <div className="flex justify-between px-5">
                     <img src={logo} alt="" />
-                    <div className="flex justify-center items-center gap-3">
-                        <p className="">Ready to get strated?</p>
+                    <div className="flex md:flex-row  justify-center items-center md:gap-3">
+                        <p className="hidden md:block">Ready to get strated?</p>
                         <button className="customBtn rounded-full border-none">Get Started</button>
                     </div>
                 </div>
-                <div className="footer mt-16 flex justify-between px-5">
+                <div className="footer mt-16 flex flex-col md:flex-row justify-between px-5 md:px-0 lg:px-5">
                     <div>
                         <span className=" text-[#1C1C1C] text-xl font-bold">Quick Links</span>
                         <a className="link link-hover hover:text-[#04a44f]">Home</a>
@@ -54,8 +56,8 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="footer flex justify-between justify-items-center footer-center p-5 footer2 container mx-auto" >
-                    <div className='flex'>
+                <div className="footer flex flex-col md:flex-row justify-between justify-items-center footer-center p-5 footer2 container mx-auto" >
+                    <div className='flex flex-row md:flex-col lg:flex-row'>
                         <a className='hover:text-[#04a44f]' href="">Privacy & Terms</a>
                         <a className='hover:text-[#04a44f]' href="">Contact Us</a>
                     </div>
@@ -65,10 +67,10 @@ const Footer = () => {
                         </p>
                     </aside>
                     <div className='flex gap-4 text-2xl cursor-pointer'>
-                        <a  className="link link-hover hover:text-green-900 text-[#04a44f] " href=""><PiFacebookLogoThin></PiFacebookLogoThin></a>
-                        <a  className="link link-hover hover:text-green-900 text-[#04a44f] " href=""><PiInstagramLogoLight></PiInstagramLogoLight></a>
-                        <a  className="link link-hover hover:text-green-900 text-[#04a44f] " href=""><PiTwitterLogoThin></PiTwitterLogoThin></a>
-                        <a  className="link link-hover hover:text-green-900 text-[#04a44f] " href=""><PiWhatsappLogoLight></PiWhatsappLogoLight></a>
+                        <a className="link link-hover hover:text-green-900 text-[#04a44f] " href=""><PiFacebookLogoThin></PiFacebookLogoThin></a>
+                        <a className="link link-hover hover:text-green-900 text-[#04a44f] " href=""><PiInstagramLogoLight></PiInstagramLogoLight></a>
+                        <a className="link link-hover hover:text-green-900 text-[#04a44f] " href=""><PiTwitterLogoThin></PiTwitterLogoThin></a>
+                        <a className="link link-hover hover:text-green-900 text-[#04a44f] " href=""><PiWhatsappLogoLight></PiWhatsappLogoLight></a>
                     </div>
                 </div>
             </div>

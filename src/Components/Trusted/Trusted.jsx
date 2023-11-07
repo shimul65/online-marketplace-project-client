@@ -47,14 +47,14 @@ const Trusted = () => {
     };
 
     return (
-        <div className=" mx-2">
+        <div className=" mx-2 overflow-hidden">
             <div className=''>
                 <p className='text-center pt-5'>Trusted by the world’s best</p>
             </div>
             <Slider {...settings}>
                 <div className=" p-10 rounded-3xl">
-                    <div className="flex flex-col gap-3 justify-center items-center ">
-                        <img className=" w-[140px] h-16 " src={company1} alt="" />
+                    <div className="flex flex-col md:gap-3 justify-center items-center ">
+                        <img className="w-[140px] h-16 " src={company1} alt="" />
                     </div>
                 </div>
                 <div className="p-10 rounded-3xl">

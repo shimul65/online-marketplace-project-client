@@ -34,8 +34,7 @@ const Question = () => {
 
     return (
         <div className="my-20">
-
-            <div className=" pr-20">
+            <div className=" px-2 md:px-0 lg:pr-20">
                 <div className="text-left mb-16">
                     <h1 className="text-6xl font-bold">Questions & Answers</h1>
                 </div>
