@@ -38,8 +38,8 @@ const Banner = () => {
                             </div>
                             <div className='ml-5 hidden md:block '>
                                 <label className=''>
-                                    <select className="input w-full md:bg-transparent lg:bg-white bg-white" >
-                                        <option disabled selected>City, State or ZIP</option>
+                                    <select className="input w-full md:bg-transparent lg:bg-white bg-white" defaultValue='City, State or ZI'>
+                                        <option >City, State or ZIP</option>
                                         <option>New York</option>
                                         <option>Miami</option>
                                         <option>Florida</option>

@@ -6,14 +6,78 @@ import SocialLogin from "../Components/SocialLogin/SocialLogin";
 import { useState } from 'react';
 import Login from './Login';
 import { Dialog } from '@material-tailwind/react';
+import useAuth from '../Hook/useAuth';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Register = () => {
+
+    const { createUser, handleUpdateProfile } = useAuth();
+
+    const navigate = useNavigate();
 
     //show password
     const [showPass, setShowPass] = useState(false);
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen((cur) => !cur);
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        const form = new FormData(e.currentTarget);
+        const email = form.get('email');
+        const password = form.get('password');
+        const name = form.get('name');
+        const photoURL = form.get('photoURL');
+        const isAccepted = form.get('terms') === 'on';
+
+
+        // password validation check
+        if (password.length < 6) {
+            toast.error('Password should be at least 6 characters or longer');
+            return
+        }
+        else if (!/[A-Z]/.test(password)) {
+            toast.error('Your Password should contain an uppercase letter')
+            return;
+        }
+
+        else if (!/[!@#%^&*()_+\-=\[\]{}|;\\':",.<>?~`]/.test(password)) {
+            toast.error('Your Password should contain a special character');
+            return;
+        }
+        else if (!isAccepted) {
+            toast.error('Please accept our terms & conditions');
+            return;
+        }
+
+
+
+        //create new user
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+
+                // update profile
+                handleUpdateProfile(name, photoURL)
+                    .then(() => {
+                        navigate(location?.state ? location.state : '/');
+                        toast.success('User Sign Up Successfully')
+                    }).catch((error) => {
+                        console.log(error);
+                    });
+
+
+            })
+            .catch(error => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                toast.error(errorCode, errorMessage);
+            })
+
+    }
+
 
 
     return (
@@ -39,7 +103,7 @@ const Register = () => {
             <div className='md:bg-[#eff6f3] py-6'>
                 <div className="container mx-auto" >
                     <div className="card-body mx-auto md:w-[80%] lg:w-[60%] border py-8 px-10 my-20 rounded-2xl shadow-2xl md:px-24">
-                        <form  >
+                        <form  onSubmit={handleRegister}>
                             <h2 className="text-4xl font-semibold text-center">Create Account</h2>
                             <hr className="my-8 mx-8" />
                             <div className="form-control mt-6">

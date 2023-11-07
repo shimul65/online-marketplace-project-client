@@ -6,11 +6,14 @@ import {
 } from "react-router-dom";
 import router from './Routes/Routes';
 import { ThemeProvider } from "@material-tailwind/react";
+import AuthProvider from './Providers/AuthProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,
 )
