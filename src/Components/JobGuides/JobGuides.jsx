@@ -29,7 +29,7 @@ const JobGuides = () => {
                             <p>
                                 Featured - 18 Jul 2023
                             </p>
-                            <h2 className="card-title hover:text-[#04a44f] cursor-pointer">Print, publishing qui visual ux quis layout mockups.</h2>
+                            <h2 className="card-title hover:text-[#04a44f] cursor-pointer">&quot;Navigating the Modern Job Market: A Comprehensive Guide&quot;</h2>
                         </div>
                         <div className="flex  items-center gap-3 hover:text-[#04a44f]  w-fit">
                             <p className=" text-base">Continue Reading </p>
@@ -47,7 +47,7 @@ const JobGuides = () => {
                             <p>
                                 Featured - 28 Oct 2023
                             </p>
-                            <h2 className="card-title hover:text-[#04a44f] cursor-pointer">Print, publishing qui visual ux quis layout mockups.</h2>
+                            <h2 className="card-title hover:text-[#04a44f] cursor-pointer">&quot;Unlocking Your Career Potential: Proven Strategies and Tips&quot;</h2>
                         </div>
                         <div className="flex  items-center gap-3 hover:text-[#04a44f]  w-fit">
                             <p className=" text-base">Continue Reading </p>
@@ -65,7 +65,7 @@ const JobGuides = () => {
                             <p>
                                 Featured - 28 Oct 2023
                             </p>
-                            <h2 className="card-title hover:text-[#04a44f] cursor-pointer">Print, publishing qui visual ux quis layout mockups.</h2>
+                            <h2 className="card-title hover:text-[#04a44f] cursor-pointer">&quot;Job Search Success: Expert Advice for Landing Your Dream Job&quot;</h2>
                         </div>
                         <div className="flex  items-center gap-3 hover:text-[#04a44f]  w-fit">
                             <p className=" text-base">Continue Reading </p>
@@ -79,5 +79,3 @@ const JobGuides = () => {
 };
 
 export default JobGuides;
-
-// style={{ backgroundImage: `url(${jobGuide1})`, backgroundSize: '100% 100%', }} 

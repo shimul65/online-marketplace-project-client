@@ -68,5 +68,3 @@ const Banner = () => {
 };
 
 export default Banner;
-
-// style={{ backgroundImage: `url(${banner1})`, backgroundSize: '100% 100%' }}
