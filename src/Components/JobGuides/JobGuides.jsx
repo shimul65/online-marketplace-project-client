@@ -1,11 +1,83 @@
+import jobGuide1 from '../../assets/blog_img_09.jpg'
+import jobGuide2 from '../../assets/blog_img_10.jpg'
+import { BsArrowRightShort } from 'react-icons/bs';
+import { VscChevronRight } from 'react-icons/vsc';
+
 
 
 const JobGuides = () => {
+
     return (
-        <div>
-            
+        <div className='mb-20'>
+            <div className="text-left pt-6 mb-16 relative">
+                <h1 className="text-6xl font-bold ml-5">Job Guides</h1>
+                <div className='flex items-center gap-2 text-[#04a44f] absolute right-10 top-[50%] hover:scale-105 ease-in-out duration-300'>
+                    <p className='underline text-lg'>Explore More</p>
+                    <div className='text-xl hover:scale-125 hover:rotate-[360deg] ease-in-out duration-500 '>
+                        <VscChevronRight></VscChevronRight>
+                    </div>
+                </div>
+            </div>
+            <div className='flex justify-around items-center gap-6'>
+                <div className="card card-compact shadow-xl h-[500px] w-full relative overflow-hidden " >
+                    <div
+                        className="absolute inset-0 bg-cover bg-center ease-in-out duration-300 hover:scale-105  "
+                        style={{ backgroundImage: `url(${jobGuide1})`, backgroundSize: '100% 100%', }}
+                    ></div>
+                    <div className="card-body border mt-[73%] bg-white rounded-b-2xl z-10">
+                        <div className="flex  flex-col gap-3 ">
+                            <p>
+                                Featured - 18 Jul 2023
+                            </p>
+                            <h2 className="card-title hover:text-[#04a44f] cursor-pointer">Print, publishing qui visual ux quis layout mockups.</h2>
+                        </div>
+                        <div className="flex  items-center gap-3 hover:text-[#04a44f]  w-fit">
+                            <p className=" text-base">Continue Reading </p>
+                            <button className=" text-3xl hover:scale-125 hover:rotate-[360deg] ease-in-out duration-500 text-[#04a44f]"><BsArrowRightShort></BsArrowRightShort></button>
+                        </div>
+                    </div>
+                </div>
+                <div className="card card-compact shadow-xl h-[500px] relative overflow-hidden  w-full " >
+                    <div
+                        className="absolute inset-0 bg-cover bg-center ease-in-out duration-300 hover:scale-105  "
+                        style={{ backgroundImage: `url(${jobGuide2})`, backgroundSize: '100% 100%', }}
+                    ></div>
+                    <div className="card-body border mt-[73%] bg-white rounded-b-2xl z-10">
+                        <div className="flex  flex-col gap-3 ">
+                            <p>
+                                Featured - 28 Oct 2023
+                            </p>
+                            <h2 className="card-title hover:text-[#04a44f] cursor-pointer">Print, publishing qui visual ux quis layout mockups.</h2>
+                        </div>
+                        <div className="flex  items-center gap-3 hover:text-[#04a44f]  w-fit">
+                            <p className=" text-base">Continue Reading </p>
+                            <button className=" text-3xl hover:scale-125 hover:rotate-[360deg] ease-in-out duration-500 text-[#04a44f]"><BsArrowRightShort></BsArrowRightShort></button>
+                        </div>
+                    </div>
+                </div>
+                <div className="card card-compact shadow-xl h-[500px] relative overflow-hidden  w-full " >
+                    <div
+                        className="absolute inset-0 bg-cover bg-center ease-in-out duration-300 hover:scale-105  "
+                        style={{ backgroundImage: `url(${jobGuide1})`, backgroundSize: '100% 100%', }}
+                    ></div>
+                    <div className="card-body border mt-[73%] bg-white rounded-b-2xl z-10">
+                        <div className="flex  flex-col gap-3 ">
+                            <p>
+                                Featured - 28 Oct 2023
+                            </p>
+                            <h2 className="card-title hover:text-[#04a44f] cursor-pointer">Print, publishing qui visual ux quis layout mockups.</h2>
+                        </div>
+                        <div className="flex  items-center gap-3 hover:text-[#04a44f]  w-fit">
+                            <p className=" text-base">Continue Reading </p>
+                            <button className=" text-3xl hover:scale-125 hover:rotate-[360deg] ease-in-out duration-500 text-[#04a44f]"><BsArrowRightShort></BsArrowRightShort></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
 
 export default JobGuides;
+
+// style={{ backgroundImage: `url(${jobGuide1})`, backgroundSize: '100% 100%', }} 
