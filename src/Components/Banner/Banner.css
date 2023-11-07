@@ -1,0 +1,24 @@
+.bounce-y {
+    transform: translatey(0px);
+    animation: bounceY 6s ease-in-out infinite;
+}
+
+@keyframes bounceY {
+    0% {
+        transform: translatey(0px);
+    }
+
+    50% {
+        transform: translatey(-20px);
+    }
+
+    100% {
+        transform: translatey(0px);
+    }
+}
+
+
+.border-gradient {
+    border-image: linear-gradient(to right, transparent, rgba(128, 128, 128, 0.438), transparent);
+    border-image-slice: 1;
+}

@@ -11,7 +11,10 @@ const Navbar = () => {
             <li className=" py-2"><NavLink to='/myCart'>My Cart</NavLink></li>
         </>
         } */}
-        <li className=" py-2"><NavLink to='/article'>Article</NavLink></li>
+        <li className=" py-2"><NavLink to='/article'>Add job</NavLink></li>
+        <li className=" py-2"><NavLink to='/article'>My posted jobs</NavLink></li>
+        <li className=" py-2"><NavLink to='/article'>My Bids</NavLink></li>
+        <li className=" py-2"><NavLink to='/article'>Bid Requests</NavLink></li>
         <li className=" py-2"><NavLink to='/seller'>Seller</NavLink></li>
 
     </>
