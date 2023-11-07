@@ -2,8 +2,13 @@ import { Link, NavLink } from "react-router-dom";
 import logo from '../../../public/logo_04.png'
 import banner1 from '../../assets/banner-bg-3.png'
 import './Navbar.css'
+import { useState } from "react";
+import { Dialog } from "@material-tailwind/react";
+import Login from "../../Pages/Login";
 
 const Navbar = () => {
+
+
 
     const navLinks = <>
         <li className=" py-2"><NavLink to='/'>Home</NavLink></li>
@@ -12,13 +17,15 @@ const Navbar = () => {
             <li className=" py-2"><NavLink to='/myCart'>My Cart</NavLink></li>
         </>
         } */}
-        <li className=" py-2"><NavLink to='/article'>Add job</NavLink></li>
-        <li className=" py-2"><NavLink to='/article'>My posted jobs</NavLink></li>
-        <li className=" py-2"><NavLink to='/article'>My Bids</NavLink></li>
-        <li className=" py-2"><NavLink to='/article'>Bid Requests</NavLink></li>
-        <li className=" py-2"><NavLink to='/seller'>Seller</NavLink></li>
+        <li className=" py-2"><NavLink to='/addJob'>Add job</NavLink></li>
+        <li className=" py-2"><NavLink to='/postedJob'>My posted jobs</NavLink></li>
+        <li className=" py-2"><NavLink to='/bids'>My Bids</NavLink></li>
+        <li className=" py-2"><NavLink to='/bidRequest'>Bid Requests</NavLink></li>
 
     </>
+
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen((cur) => !cur);
 
 
     return (
@@ -71,12 +78,21 @@ const Navbar = () => {
                     <button className="ctrl-standard  fx-sliderIn btn rounded-full bg-black hover:text-black text-xs md:text-base font-medium md:font-extrabold text-[#FFF] px-7 hover:border-black">LOG IN</button>
                 </Link>
         } */}
-                    <Link to='/login'>
+                    {/* <Link to='/login'>
                         <button className="customBtn rounded-full hover:text-white">LOG IN</button>
-                    </Link>
+                    </Link> */}
+                    <button onClick={handleOpen} className="customBtn rounded-full hover:text-white">LOG IN</button>
+                    <Dialog
+                        // size=""
+                        open={open}
+                        handler={handleOpen}
+                        className="bg-transparent shadow-none"
+                    >
+                        <Login handler={handleOpen}></Login>
+                    </Dialog>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
