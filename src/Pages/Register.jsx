@@ -4,13 +4,13 @@ import banner1 from '../assets/banner-bg-3.png'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from "../Components/SocialLogin/SocialLogin";
 import { useState } from 'react';
-import Login from './Login';
-import { Dialog } from '@material-tailwind/react';
 import useAuth from '../Hook/useAuth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 const Register = () => {
+
+   
 
     const { createUser, handleUpdateProfile } = useAuth();
 
@@ -18,9 +18,6 @@ const Register = () => {
 
     //show password
     const [showPass, setShowPass] = useState(false);
-
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen((cur) => !cur);
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -103,7 +100,7 @@ const Register = () => {
             <div className='md:bg-[#eff6f3] py-6'>
                 <div className="container mx-auto" >
                     <div className="card-body mx-auto md:w-[80%] lg:w-[60%] border py-8 px-10 my-20 rounded-2xl shadow-2xl md:px-24">
-                        <form  onSubmit={handleRegister}>
+                        <form onSubmit={handleRegister}>
                             <h2 className="text-4xl font-semibold text-center">Create Account</h2>
                             <hr className="my-8 mx-8" />
                             <div className="form-control mt-6">
@@ -145,18 +142,9 @@ const Register = () => {
                                 <button className="customBtn rounded-full hover:text-white text-xl">Register</button>
                             </div>
                         </form>
-                        <p className="mt-8 text-center">Already Have An Account ?
-                            <span onClick={handleOpen} className="text-[#04a44f] cursor-pointer font-medium underline ml-2">
-                                Login
-                                <Dialog
-                                    // size=""
-                                    open={open}
-                                    handler={handleOpen}
-                                    className="bg-transparent shadow-none"
-                                >
-                                    <Login></Login>
-                                </Dialog>
-                            </span></p>
+                        <p className="mt-8 text-center">Already Have An Account ?<Link to='/login'>
+                            <span className="text-[#04a44f] cursor-pointer font-medium underline ml-2">Login</span></Link>
+                        </p>
                         <div className="divider">continue with</div>
                         <div className="w-full">
                             <SocialLogin></SocialLogin>
