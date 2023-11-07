@@ -31,7 +31,6 @@ const Navbar = () => {
             })
     }
 
-
     const navLinks = <>
         <li className=" py-2"><NavLink to='/'>Home</NavLink></li>
         {/* {user && <>

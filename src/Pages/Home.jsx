@@ -19,7 +19,6 @@ const Home = () => {
             <div className="container mx-auto">
                 <Question></Question>
             </div>
-
         </div>
     );
 };
