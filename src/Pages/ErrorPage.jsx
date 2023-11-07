@@ -4,7 +4,7 @@ import notFound from '../assets/something-lost.png'
 const ErrorPage = () => {
     const error = useRouteError();
     return (
-        <div className="mx-auto py-20 md:py-40 card min-h-screen shadow-lg text-center bg-[#eff6f3]">
+        <div className="mx-auto card min-h-screen shadow-lg text-center bg-[#eff6f3]">
             <div className="card-body">
                 {
                     error.status === 404 &&

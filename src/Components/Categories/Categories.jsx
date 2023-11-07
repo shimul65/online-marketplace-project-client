@@ -1,15 +1,45 @@
 import { useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { VscChevronRight } from 'react-icons/vsc';
+import axios from "axios";
+import Category from "./Category";
 
 
 const Categories = () => {
+
     const [tabIndex, setTabIndex] = useState(0);
     // console.log(tabIndex);
 
+    const [categories, setCategories] = useState([]);
+
+    axios.get('http://localhost:5055/categories')
+        .then(res => setCategories(res.data))
+    // console.log(categories);
+
+    //category tab
+
+    // const categoryName = tabIndex === 0 ? 'Web Development' : '';
+
+    const categoryName = () => {
+        let categoryName = '';
+        if (tabIndex === 0) {
+            categoryName = 'Web Development'
+        }
+        else if (tabIndex === 1) {
+            categoryName = 'Graphics Design'
+        }
+        else {
+            categoryName = 'Digital Marketing'
+        }
+        return categoryName;
+    }
+
+
+    const tabCategories = categories?.filter(category => category.categoryName === categoryName());
+
     return (
         <div>
-            <div className="md:bg-[#eff6f3] py-24 mt-8">
+            <div className="md:bg-[#eff6f3] pt-24 pb-14 my-8">
                 <div className="container mx-auto" >
                     <div className="text-left mb-16 relative">
                         <h1 className="text-6xl font-bold ml-2">Most Demanding Categories.</h1>
@@ -35,14 +65,28 @@ const Categories = () => {
                                 </div></Tab>
                             </div>
                         </TabList>
-                        <TabPanel><h2>Any content 1</h2></TabPanel>
-                        <TabPanel><h2>Any content 2</h2></TabPanel>
-                        <TabPanel><h2>Any content 3</h2></TabPanel>
+                        <TabPanel>
+                            <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-4 gap-5 mx-3 my-24 md:mx-0">
+                                {
+                                    tabCategories?.map(category => <Category key={category._id} category={category} tabIndex={tabIndex}></Category>)
+                                }
+                            </div >
+                        </TabPanel>
+                        <TabPanel>
+                            <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-4 gap-5 mx-3 my-24 md:mx-0">
+                                {
+                                    tabCategories?.map(category => <Category key={category._id} category={category} tabIndex={tabIndex}></Category>)
+                                }
+                            </div>
+                        </TabPanel>
+                        <TabPanel>
+                            <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-4 gap-5 mx-3 my-24 md:mx-0">
+                                {
+                                    tabCategories?.map(category => <Category key={category._id} category={category} tabIndex={tabIndex}></Category>)
+                                }
+                            </div>
+                        </TabPanel>
                     </Tabs>
-
-                    <div className="grid grid-cols-1  md:grid-cols-2 justify-items-center lg:grid-cols-4 gap-5 mx-3 md:mx-0">
-
-                    </div>
                 </div >
             </div >
         </div >
