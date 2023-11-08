@@ -117,7 +117,12 @@ const MyBids = () => {
                                             <td className="text-sm md:text-lg font-semibold">
                                                 {myBid?.bidDeadline}
                                             </td>
-                                            <td className="text-sm md:text-lg  font-semibold">{myBid?.bidStatus}</td>
+                                            {myBid.bidStatus === 'canceled'
+                                                ?
+                                                <td className="text-sm md:text-lg  font-semibold text-red-500">{myBid?.bidStatus}</td>
+                                                :
+                                                <td className="text-sm md:text-lg  font-semibold">{myBid?.bidStatus}</td>
+                                            }
                                             <th>
                                                 {myBid.bidStatus === 'pending' &&
                                                     <button style={{ padding: '0px 2px', }}

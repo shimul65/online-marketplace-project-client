@@ -20,7 +20,7 @@ const BidsRequest = () => {
         .then(res => setMyBidRequests(res.data))
 
 
-    // update order
+    // handler reject btn
     const handleReject = id => {
 
         const updateStatus = { bidStatus: 'canceled', bidRequestStatus: 'rejected' }
@@ -31,6 +31,21 @@ const BidsRequest = () => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
                     toast.success('Job Bid rejected successfully')
+                }
+            })
+    }
+
+    // handler reject btn
+    const handelAccept = id => {
+
+        const updateStatus = { bidStatus: 'in progress', bidRequestStatus: 'in progress' }
+
+        // send updated data to backend using axios
+        axios.patch(`http://localhost:5055/bids/${id}`, updateStatus)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount > 0) {
+                    toast.success('Job Bid Accept successfully')
                 }
             })
     }
@@ -121,15 +136,27 @@ const BidsRequest = () => {
                                                 </div>
                                             </td>
                                             <td className="text-sm md:text-lg  font-semibold">$ {myBid?.biddingPrice}</td>
-                                            <td className="text-sm md:text-lg  font-semibold">{myBid?.bidRequestStatus}</td>
-                                            <th>
-                                                <div onClick={() => handleReject(myBid._id)} className="flex flex-col gap-2">
-                                                    <button style={{ padding: '0px 0px', background: '#ff4b01' }}
-                                                        className="customBtn btn flex justify-center items-center rounded-full font-medium hover:text-black text-xs md:text-lg  border-none" >Reject</button>
 
-                                                    <button style={{ padding: '0px 2px', }}
-                                                        className="customBtn btn flex justify-center items-center rounded-full font-medium hover:text-black text-base  border-none">Complete</button>
-                                                </div>
+                                            {myBid.bidRequestStatus === 'rejected' &&
+                                                < td className="text-sm md:text-lg  font-semibold text-red-500">{myBid?.bidRequestStatus}</td>
+                                            }
+                                            {myBid.bidRequestStatus === 'in progress' &&
+                                                < td className="text-sm md:text-lg  font-semibold text-green-500-500">{myBid?.bidRequestStatus}</td>
+                                            }
+                                            {myBid.bidRequestStatus === 'pending' &&
+                                                <td className="text-sm md:text-lg  font-semibold">{myBid?.bidRequestStatus}</td>
+                                            }
+                                            <th>
+                                                {myBid.bidRequestStatus === 'rejected' && ''}
+                                                {myBid.bidRequestStatus === 'in progress' && <btn>Progress</btn>}
+                                                {myBid.bidRequestStatus === 'pending' &&
+                                                    <div onClick={() => handleReject(myBid._id)} className="flex flex-col gap-2">
+                                                        <button style={{ padding: '0px 0px', background: '#ff4b01' }}
+                                                            className="customBtn btn flex justify-center items-center rounded-full font-medium hover:text-black text-xs md:text-lg  border-none" >Reject</button>
+
+                                                        <button onClick={() => handelAccept(myBid._id)} style={{ padding: '0px 2px', }}
+                                                            className="customBtn btn flex justify-center items-center rounded-full font-medium hover:text-black text-base  border-none">Accept</button>
+                                                    </div>}
 
                                             </th>
                                         </tr>)
@@ -138,7 +165,7 @@ const BidsRequest = () => {
                         </table>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 };
