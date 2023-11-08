@@ -116,11 +116,13 @@ const AddJob = () => {
                             </form>
                         </div>
                     </div>
-                    <NavLink onClick={navigateToPreviousPage}>
-                        <button
-                            style={{ background: 'black' }} className="customBtn  flex justify-center mx-auto mt-10 items-center h-14 rounded-full hover:text-black text-xs md:text-xl  border-none">Go Back
-                        </button>
-                    </NavLink>
+                    <div className="w-fit flex justify-center mx-auto mt-10 items-center">
+                        <NavLink onClick={navigateToPreviousPage}>
+                            <button
+                                style={{ background: 'black' }} className="customBtn  h-14 rounded-full hover:text-black text-xs md:text-xl  border-none">Go Back
+                            </button>
+                        </NavLink>
+                    </div>
                 </div>
 
 

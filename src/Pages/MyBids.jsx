@@ -112,20 +112,20 @@ const MyBids = () => {
                                                 </div>
                                             </td>
                                             <td className="hidden md:block ">
-                                                <div className="text-xl font-bold text-center ">{myBid?.employerEmail}</div>
+                                                <div className="text-xl mt-2 font-bold text-center ">{myBid?.employerEmail}</div>
                                             </td>
                                             <td className="text-sm md:text-lg font-semibold">
                                                 {myBid?.bidDeadline}
                                             </td>
-                                            <td className="text-sm md:text-lg  font-semibold">{myBid?.status}</td>
+                                            <td className="text-sm md:text-lg  font-semibold">{myBid?.bidStatus}</td>
                                             <th>
-                                                {myBid.status === 'pending' &&
+                                                {myBid.bidStatus === 'pending' &&
                                                     <button style={{ padding: '0px 2px', }}
                                                         className="customBtn btn flex justify-center items-center h-14 w-full rounded-full font-medium hover:text-black text-xs md:text-lg  border-none" disabled>Complete</button>}
-                                                {myBid.status === 'in progress' &&
+                                                {myBid.bidStatus === 'in progress' &&
                                                     <button style={{ padding: '0px 2px', }}
                                                         className="customBtn btn flex justify-center items-center h-14 w-full rounded-full font-medium hover:text-black text-xs md:text-lg  border-none">Complete</button>}
-                                                {myBid.status === 'complete' &&
+                                                {myBid.bidStatus === 'complete' &&
                                                     <div className="text-4xl text-green-700 hover:scale-110 duration-300 flex justify-center ease-in-out">
                                                         <IoCheckmarkDone></IoCheckmarkDone></div>}
                                             </th>
