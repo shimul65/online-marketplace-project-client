@@ -3,32 +3,27 @@ import web1 from '../../assets/web11.png'
 import web2 from '../../assets/web12.png'
 import web3 from '../../assets/web13.png'
 import { BsCurrencyDollar } from "react-icons/bs";
-const Job = ({ job, tabIndex }) => {
 
-    const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice } = job;
+const MyPostedJobCard = ({ job }) => {
 
-    // const currentDate = new Date();
+    const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice, categoryName } = job;
 
-    // Get the year, month, and day
-    // const year = currentDate.getFullYear();
-    // const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-    // const day = String(currentDate.getDate()).padStart(2, '0');
-    // const formattedDate = `${year}-${month}-${day}`;
-
-    // console.log(formattedDate);
 
     return (
         <div className="card card-compact border border-gray-300 pt-10 pb-5 shadow-xl hover:bg-[#F8FDE4] cursor-pointer">
             <div className='relative'>
                 <figure>
                     {
-                        tabIndex == 0 && <img className='mr-[70%]' src={web1} alt="web photo" />
+                        categoryName === 'Web Development' &&
+                        <img className='mr-[70%]' src={web1} alt="web photo" />
                     }
                     {
-                        tabIndex == 1 && <img className='mr-[70%]' src={web2} alt="web photo" />
+                        categoryName === 'Graphics Design' &&
+                        <img className='mr-[70%]' src={web2} alt="web photo" />
                     }
                     {
-                        tabIndex == 2 && <img className='mr-[70%]' src={web3} alt="web photo" />
+                        categoryName === 'Digital Marketing' &&
+                        <img className='mr-[70%]' src={web3} alt="web photo" />
                     }
                 </figure>
 
@@ -54,30 +49,17 @@ const Job = ({ job, tabIndex }) => {
                         <h1 className='text-lg font-medium'>Deadline: <span className="text-xl">{deadline}</span> </h1>
                     </div>
                 </div>
-                <Link to={`/jobs/${_id}`}>
-                    <button
-                        className="customBtn flex justify-center items-center h-14  w-full rounded-full hover:text-black text-xs md:text-xl  border-none">Bid Now
-                    </button></Link>
+                <div className='flex flex-col md:flex-row gap-2'>
+                    <Link>
+                        <button
+                            className="customBtn flex justify-center items-center h-14  w-full rounded-full hover:text-black text-xs md:text-xl  border-none">Update</button></Link>
+                    <Link >
+                        <button style={{ background: '#ff4b01' }}
+                            className="customBtn flex justify-center items-center h-14  w-full rounded-full hover:text-black text-xs md:text-xl  border-none">Delete</button></Link>
+                </div>
             </div>
         </div>
     );
 };
 
-export default Job;
-
-{/* {
-    tabIndex === 0 && <img src={web1} alt="" />
-}
-{
-    tabIndex === 1 && <img src={web2} alt="" />
-}
-{
-    tabIndex === 2 && <img src={web3} alt="" />
-}
-<h3 className='mt-6 font-bold text-xl'>{jobTitle}</h3>
-<p className='my-3 text-lg'>Price Range: <span className='text-green-700 font-extrabold'> ${minimumPrice} - ${maximumPrice}</span></p>
-<p>Deadline: {deadline}</p>
-<p>{description}</p>
-<button className='customBtn rounded-full text-xl'>Bid Now</button> */}
-
-{/* border border-gray-300 rounded-lg shadow-lg p-10 */ }
+export default MyPostedJobCard;

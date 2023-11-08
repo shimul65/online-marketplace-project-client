@@ -21,6 +21,9 @@ const JobsDetails = () => {
 
     const [bids, setBids] = useState([]);
 
+    axios.get(`http://localhost:5055/bids?buyerEmail=${user?.email}`)
+        .then(res => setBids(res.data))
+
     const handleBidJob = e => {
 
         e.preventDefault();
@@ -48,10 +51,9 @@ const JobsDetails = () => {
         }
         // console.log(bid);
 
-        axios.get(`http://localhost:5055/bids?buyerEmail=${user?.email}`)
-            .then(res => setBids(res.data))
 
-        const isExists = bids.find(bid => bid.jobId === _id);
+        const isExists = Boolean(bids?.find(bid => bid.jobId === _id));
+
         if (isExists) {
             return toast.error('You have already been bid to this job.', {
                 style: {
@@ -75,7 +77,11 @@ const JobsDetails = () => {
                             text: 'Your Bid added successfully',
                             icon: 'success',
                             confirmButtonText: 'Cool'
-                        })
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.reload();
+                            }
+                        });
                     }
 
                 })
@@ -106,7 +112,7 @@ const JobsDetails = () => {
             {/* job details with bid on project from */}
             <div className='md:bg-[#eff6f3] pt-20 pb-52'>
                 <div className="container mx-auto flex flex-col md:flex-row justify-center gap-5 items-center" >
-                    <div className="card card-compact border border-gray-300 pt-10 pb-5 shadow-xl">
+                    <div className="card flex-1 card-compact border border-gray-300 pt-10 pb-5 shadow-xl">
                         <div className='relative'>
                             <figure>
                                 {

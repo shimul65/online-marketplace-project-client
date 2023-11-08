@@ -4,10 +4,13 @@ import banner2 from '../assets/banner-bg-3-0.png'
 import banner1 from '../assets/banner-bg-3.png'
 import { Input, Textarea } from "@material-tailwind/react";
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const AddJob = () => {
 
     const { user } = useAuth();
+
+    const navigate = useNavigate();
 
     const handleAddJob = e => {
         e.preventDefault();
@@ -28,6 +31,7 @@ const AddJob = () => {
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
+                    navigate('/postedJob')
                     Swal.fire({
                         title: 'Success!',
                         text: 'Your Job Added Successfully',
@@ -48,7 +52,7 @@ const AddJob = () => {
                         <div className="flex flex-col my-7 md:my-0 items-center space-y-5 md:space-y-9 md:mb-[85%] lg:mb-[85%]">
                             <h2 className=" text-4xl lg:text-6xl font-extrabold text-center">Add Jobs Here
                             </h2>
-                            <p className="text-sm px-16 md:px-0 md:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;Define the position or role you&#39;re looking to fill, <br /> making it easier for potential candidates to understand the job&#39;s&#34;</p>
+                            <p className="text-sm px-16 md:px-0 lg:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;Define the position or role you&#39;re looking to fill, <br /> making it easier for potential candidates to understand the job&#39;s&#34;</p>
                         </div>
                     </div>
                     <div className='mb-1'>
@@ -69,7 +73,7 @@ const AddJob = () => {
                                     <div className=" w-full ">
                                         <Input size="lg" name="employerEmail" required defaultValue={user?.email} className="font-bold" color="blue" label="Your Email" />
                                     </div>
-                                    <div className="form-control w-full">
+                                    <div className="form-control w-full mt-6 md:mt-0">
                                         <label>
                                             <select className="input input-bordered w-full" name="category" required >
                                                 <option disabled >Select Brand Name</option>
@@ -82,10 +86,10 @@ const AddJob = () => {
                                 </div>
                                 {/* form row */}
                                 <div className="md:flex gap-6">
-                                    <div className=" w-full ">
+                                    <div className=" w-full  ">
                                         <Input size="lg" type="text" required name="title" className="font-bold" color="purple" label="Job Title" />
                                     </div>
-                                    <div className="form-control w-full">
+                                    <div className="form-control w-full mt-6 md:mt-0">
                                         <Input size="lg" name="bidDeadline" required type="date" color="indigo" label="Deadline" />
                                     </div>
                                 </div>
@@ -94,7 +98,7 @@ const AddJob = () => {
                                     <div className=" w-full ">
                                         <Input size="lg" type="number" required name="minPrice" min={1} className="font-bold" color="purple" label="Minimum Price Range" />
                                     </div>
-                                    <div className=" w-full ">
+                                    <div className=" w-full mt-6 md:mt-0">
                                         <Input size="lg" type="number" required name="maxPrice" min={1} className="font-bold" color="purple" label="Maximum Price Range" />
                                     </div>
                                 </div>
