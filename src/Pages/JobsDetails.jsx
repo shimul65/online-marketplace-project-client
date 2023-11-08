@@ -9,6 +9,8 @@ import web3 from '../assets/web13.png'
 import { Input } from "@material-tailwind/react";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 
 const JobsDetails = () => {
@@ -16,6 +18,8 @@ const JobsDetails = () => {
     const job = useLoaderData();
     const { user } = useAuth();
     const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice, categoryName, employerEmail } = job;
+
+    const [bids, setBids] = useState([]);
 
     const handleBidJob = e => {
 
@@ -44,19 +48,38 @@ const JobsDetails = () => {
         }
         // console.log(bid);
 
-        axios.post('http://localhost:5055/bids', bid)
-            .then(res => {
-                console.log(res.data);
-                if (res.data.insertedId) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Your Bid added successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    })
-                }
+        axios.get(`http://localhost:5055/bids?buyerEmail=${user?.email}`)
+            .then(res => setBids(res.data))
 
-            })
+        const isExists = bids.find(bid => bid.jobId === _id);
+        if (isExists) {
+            return toast.error('You have already been bid to this job.', {
+                style: {
+                    border: '1px solid #713200',
+                    padding: '16px',
+                    color: '#713200',
+                },
+                iconTheme: {
+                    primary: '#713200',
+                    secondary: '#FFFAEE',
+                },
+            });
+        }
+        else {
+            axios.post('http://localhost:5055/bids', bid)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Your Bid added successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Cool'
+                        })
+                    }
+
+                })
+        }
 
     }
 
@@ -144,7 +167,13 @@ const JobsDetails = () => {
                                         <Input size="lg" name="bidDeadline" required type="date" className="font-bold" color="indigo" label="Deadline" />
                                     </div>
                                 </div>
-                                <input type="submit" value='Bid On the Project' className="customBtn flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
+                                {
+                                    user?.email === employerEmail
+                                        ?
+                                        <input type="submit" value='Bid On the Project' className="btn flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" disabled />
+                                        :
+                                        <input type="submit" value='Bid On the Project' className="customBtn flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
+                                }
                             </form>
                         </div>
                     </div>
