@@ -1,8 +1,19 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### Adding at least 5 Project features.
+- Adding at least 5 Project features -->
 
-Currently, two official plugins are available:
+   1. Job Posting and Search:::
+   Employers should be able to easily post job listings, including job titles, descriptions, required skills, compensation details, and application deadlines.  This feature streamlines the job posting and discovery process.
+    2. Skill Tests and Assessments::
+   Offer skill assessment tests that job seekers can take to validate their abilities, helping employers make more informed hiring decisions..
+   3. Legal and Contract Management:: 
+   Provide tools for creating and managing employment contracts, ensuring clarity and compliance with labor laws..
+   4. Job Matching Algorithms:
+   Implement intelligent algorithms to suggest job listings to candidates and potential employees to employers, enhancing the chances of successful matches.
+   5. Mobile Accessibility:
+   Ensure a responsive design for mobile devices, enabling users to access and interact with the platform on smartphones and tablets.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+   * * *
+
+- Live Website Link --> [Online Marketplace Website Shimul](https://online-marketplace-shimul.web.app/)
+

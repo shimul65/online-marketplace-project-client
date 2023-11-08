@@ -29,33 +29,14 @@ const MyPostedJobCard = ({ job }) => {
                     .then(res => {
                         console.log(res.data);
                         if (res.data.deletedCount > 0) {
+
                             Swal.fire(
                                 'Deleted!',
-                                'Your cart item has been deleted.',
+                                'Your Posted Job has been deleted.',
                                 'success'
                             )
-                            window.location.reload();
                         }
                     })
-
-                // fetch(`http://localhost:5055/jobs/${_id}`, {
-                //     method: 'DELETE',
-                //     headers: {
-                //         'Content-Type': 'application/json'
-                //     }
-                // })
-                //     .then(res => res.json())
-                //     .then(data => {
-                //         console.log(data)
-                //         if (data.deletedCount > 0) {
-                //             Swal.fire(
-                //                 'Deleted!',
-                //                 'Your cart item has been deleted.',
-                //                 'success'
-                //             )
-                //             window.location.reload();
-                //         }
-                //     })
             }
         })
     }
@@ -101,7 +82,7 @@ const MyPostedJobCard = ({ job }) => {
                     </div>
                 </div>
                 <div className='flex flex-col md:flex-row gap-2'>
-                    <Link>
+                    <Link to={`/updatedJob/${_id}`}>
                         <button
                             className="customBtn flex justify-center items-center h-14  w-full rounded-full hover:text-black text-xs md:text-xl  border-none">Update</button></Link>
                     <button onClick={() => handleDelete(_id)} style={{ background: '#ff4b01' }}

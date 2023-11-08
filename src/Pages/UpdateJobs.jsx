@@ -6,7 +6,7 @@ import { Input, Textarea } from "@material-tailwind/react";
 import Swal from 'sweetalert2';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-const AddJob = () => {
+const UpdateJobs = () => {
 
     const { user } = useAuth();
 
@@ -46,6 +46,7 @@ const AddJob = () => {
         window.history.back();
     };
 
+
     return (
         <>
             {/* banner */}
@@ -54,7 +55,7 @@ const AddJob = () => {
                 >
                     <div className="z-10">
                         <div className="flex flex-col my-7 md:my-0 items-center space-y-5 md:space-y-9 md:mb-[85%] lg:mb-[85%]">
-                            <h2 className=" text-4xl lg:text-6xl font-extrabold text-center">Add Jobs Here
+                            <h2 className=" text-4xl lg:text-5xl font-extrabold text-center"> Update Your Posted Job
                             </h2>
                             <p className="text-sm px-16 md:px-0 lg:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;Define the position or role you&#39;re looking to fill, <br /> making it easier for potential candidates to understand the job&#39;s&#34;</p>
                         </div>
@@ -69,7 +70,7 @@ const AddJob = () => {
             <div className='md:bg-[#eff6f3] pt-20 pb-52'>
                 <div className="container mx-auto" >
                     <div className=" flex-1 shadow-xl py-16 rounded-2xl  border border-gray-300">
-                        <h2 className="text-3xl mb-10 md:text-4xl font-bold text-center">Add Your Jobs : </h2>
+                        <h2 className="text-3xl mb-10 md:text-4xl font-bold text-center">Update Jobs : </h2>
                         <div className="mx-4 md:mx-16 lg:mx-32">
                             <form onSubmit={handleAddJob} className='space-y-10'>
                                 {/* form row */}
@@ -112,21 +113,20 @@ const AddJob = () => {
                                         <Textarea name='description' color="green" label="Job Description" />
                                     </div>
                                 </div>
-                                <input type="submit" value='Add Job' className="customBtn flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
+                                <input type="submit" value='Update Job' className="customBtn flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
                             </form>
                         </div>
                     </div>
-                    <NavLink onClick={navigateToPreviousPage}>
-                        <button
-                            style={{ background: 'black' }} className="customBtn  flex justify-center mx-auto mt-10 items-center h-14 rounded-full hover:text-black text-xs md:text-xl  border-none">Go Back
-                        </button>
-                    </NavLink>
                 </div>
-
+                <NavLink onClick={navigateToPreviousPage}>
+                    <button
+                        style={{ background: 'black' }} className="customBtn  flex justify-center mx-auto mt-10 items-center h-14 rounded-full hover:text-black text-xs md:text-xl  border-none">Go Back
+                    </button>
+                </NavLink>
 
             </div>
         </>
     );
 };
 
-export default AddJob;
+export default UpdateJobs;

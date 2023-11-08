@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import banner2 from '../assets/banner-bg-3-0.png'
 import banner1 from '../assets/banner-bg-3.png'
@@ -88,6 +88,10 @@ const JobsDetails = () => {
         }
 
     }
+
+    const navigateToPreviousPage = () => {
+        window.history.back();
+    };
 
 
     return (
@@ -184,8 +188,11 @@ const JobsDetails = () => {
                         </div>
                     </div>
                 </div>
-
-
+                <NavLink onClick={navigateToPreviousPage}>
+                    <button
+                        style={{ background: 'black' }} className="customBtn  flex justify-center mx-auto mt-10 items-center h-14 rounded-full hover:text-black text-xs md:text-xl  border-none">Go Back
+                    </button>
+                </NavLink>
             </div>
         </>
     );
