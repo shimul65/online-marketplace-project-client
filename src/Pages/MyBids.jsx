@@ -10,6 +10,7 @@ import { IoCheckmarkDone } from 'react-icons/io5';
 import web1 from '../assets/web11.png'
 import web2 from '../assets/web12.png'
 import web3 from '../assets/web13.png'
+import toast from "react-hot-toast";
 
 // bidDeadline
 // biddingPrice
@@ -36,6 +37,21 @@ const MyBids = () => {
 
     axios.get(`http://localhost:5055/bids?buyerEmail=${user?.email}`)
         .then(res => setMyBids(res.data))
+
+    // handler complete btn
+    const handelComplete = id => {
+
+        const updateStatus = { bidStatus: 'complete', bidRequestStatus: 'complete' }
+
+        // send updated data to backend using axios
+        axios.patch(`http://localhost:5055/bids/${id}`, updateStatus)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount > 0) {
+                    toast.success('Job Bid Accept successfully')
+                }
+            })
+    }
 
 
     return (
@@ -117,18 +133,25 @@ const MyBids = () => {
                                             <td className="text-sm md:text-lg font-semibold">
                                                 {myBid?.bidDeadline}
                                             </td>
-                                            {myBid.bidStatus === 'canceled'
-                                                ?
-                                                <td className="text-sm md:text-lg  font-semibold text-red-500">{myBid?.bidStatus}</td>
-                                                :
-                                                <td className="text-sm md:text-lg  font-semibold">{myBid?.bidStatus}</td>
+                                            {myBid.bidStatus === 'pending' &&
+                                                <td className="text-sm md:text-lg  font-semibold">Pending</td>
+                                            }
+                                            {myBid.bidStatus === 'canceled' &&
+                                                <td className="text-sm md:text-lg  font-semibold text-red-500">Cancelled</td>
+                                            }
+                                            {myBid.bidStatus === 'in progress' &&
+                                                <td className="text-sm md:text-lg  font-semibold text-blue-500">In Progress..</td>
+                                            }
+                                            {myBid.bidStatus === 'complete' &&
+                                                <td className="text-sm md:text-lg  font-semibold text-green-500">Completed</td>
                                             }
                                             <th>
                                                 {myBid.bidStatus === 'pending' &&
                                                     <button style={{ padding: '0px 2px', }}
                                                         className="customBtn btn flex justify-center items-center h-14 w-full rounded-full font-medium hover:text-black text-xs md:text-lg  border-none" disabled>Complete</button>}
+                                                {myBid.bidStatus === 'canceled' && ''}
                                                 {myBid.bidStatus === 'in progress' &&
-                                                    <button style={{ padding: '0px 2px', }}
+                                                    <button onClick={() => handelComplete(myBid._id)} style={{ padding: '0px 2px', }}
                                                         className="customBtn btn flex justify-center items-center h-14 w-full rounded-full font-medium hover:text-black text-xs md:text-lg  border-none">Complete</button>}
                                                 {myBid.bidStatus === 'complete' &&
                                                     <div className="text-4xl text-green-700 hover:scale-110 duration-300 flex justify-center ease-in-out">

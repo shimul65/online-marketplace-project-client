@@ -3,13 +3,14 @@ import useAuth from "../Hook/useAuth";
 import { useState } from "react";
 import banner2 from '../assets/banner-bg-3-0.png'
 import banner1 from '../assets/banner-bg-3.png'
-// import MyPostedJobCard from '../Components/MyPostedJobCard/MyPostedJobCard';
 import { VscChevronRight } from 'react-icons/vsc';
+import { IoCloudDone } from 'react-icons/io5';
 
 import web1 from '../assets/web11.png'
 import web2 from '../assets/web12.png'
 import web3 from '../assets/web13.png'
 import toast from "react-hot-toast";
+import { Progress } from "@material-tailwind/react";
 
 const BidsRequest = () => {
 
@@ -25,7 +26,6 @@ const BidsRequest = () => {
 
         const updateStatus = { bidStatus: 'canceled', bidRequestStatus: 'rejected' }
 
-        // send updated data to backend using axios
         axios.patch(`http://localhost:5055/bids/${id}`, updateStatus)
             .then(res => {
                 console.log(res.data);
@@ -35,13 +35,12 @@ const BidsRequest = () => {
             })
     }
 
-    // handler reject btn
-    const handelAccept = id => {
+    // handler accept btn
+    const handelAccept = _id => {
 
         const updateStatus = { bidStatus: 'in progress', bidRequestStatus: 'in progress' }
 
-        // send updated data to backend using axios
-        axios.patch(`http://localhost:5055/bids/${id}`, updateStatus)
+        axios.patch(`http://localhost:5055/bids/${_id}`, updateStatus)
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
@@ -138,17 +137,21 @@ const BidsRequest = () => {
                                             <td className="text-sm md:text-lg  font-semibold">$ {myBid?.biddingPrice}</td>
 
                                             {myBid.bidRequestStatus === 'rejected' &&
-                                                < td className="text-sm md:text-lg  font-semibold text-red-500">{myBid?.bidRequestStatus}</td>
+                                                < td className="text-sm md:text-lg  font-semibold text-red-500">Rejected</td>
                                             }
                                             {myBid.bidRequestStatus === 'in progress' &&
-                                                < td className="text-sm md:text-lg  font-semibold text-green-500-500">{myBid?.bidRequestStatus}</td>
+                                                < td className="text-sm md:text-lg  font-semibold text-blue-500">In Progress..</td>
                                             }
                                             {myBid.bidRequestStatus === 'pending' &&
-                                                <td className="text-sm md:text-lg  font-semibold">{myBid?.bidRequestStatus}</td>
+                                                <td className="text-sm md:text-lg  font-semibold">Pending</td>
+                                            }
+                                            {myBid.bidRequestStatus === 'complete' &&
+                                                <td className="text-sm md:text-lg text-green-500  font-semibold">Completed</td>
                                             }
                                             <th>
                                                 {myBid.bidRequestStatus === 'rejected' && ''}
-                                                {myBid.bidRequestStatus === 'in progress' && <btn>Progress</btn>}
+                                                {myBid.bidRequestStatus === 'in progress' && <div>
+                                                    <Progress style={{fontSize: '11px', height: '25px',}} color="blue" size="sm" value={75} label="Completed" /></div>}
                                                 {myBid.bidRequestStatus === 'pending' &&
                                                     <div onClick={() => handleReject(myBid._id)} className="flex flex-col gap-2">
                                                         <button style={{ padding: '0px 0px', background: '#ff4b01' }}
@@ -157,6 +160,9 @@ const BidsRequest = () => {
                                                         <button onClick={() => handelAccept(myBid._id)} style={{ padding: '0px 2px', }}
                                                             className="customBtn btn flex justify-center items-center rounded-full font-medium hover:text-black text-base  border-none">Accept</button>
                                                     </div>}
+                                                {myBid.bidRequestStatus === 'complete' &&
+                                                    <div className="text-4xl text-green-700 hover:scale-110 duration-300 flex justify-center ease-in-out">
+                                                        <IoCloudDone></IoCloudDone></div>}
 
                                             </th>
                                         </tr>)

@@ -58,7 +58,7 @@ const Company = () => {
                         </div>
                         <button className="btn btn-outline btn-success  rounded-full mx-auto border text w-1/2 mb-6">Search</button>
                     </div >
-                </div>
+                </div >
             </div>
         </div>
     );

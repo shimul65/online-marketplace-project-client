@@ -49,6 +49,7 @@ ul a.active {
 
 
 .job:hover {
-    background-size: 105% 105%; /* Increase background size on hover */
-  }
+    background-size: 105% 105%;
+    /* Increase background size on hover */
+}
 
