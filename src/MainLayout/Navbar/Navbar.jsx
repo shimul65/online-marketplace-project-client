@@ -33,15 +33,18 @@ const Navbar = () => {
 
     const navLinks = <>
         <li className=" py-2"><NavLink to='/'>Home</NavLink></li>
-        {/* {user && <>
-            <li className=" py-2"><NavLink to='/addProduct'>Add Product</NavLink></li>
-            <li className=" py-2"><NavLink to='/myCart'>My Cart</NavLink></li>
+        {user && <>
+            <li className=" py-2"><NavLink to='/addJob'>Add job</NavLink></li>
+            <li className=" py-2"><NavLink to='/postedJob'>My posted jobs</NavLink></li>
+            <li className=" py-2"><NavLink to='/bids'>My Bids</NavLink></li>
+            <li className=" py-2"><NavLink to='/bidsRequest'>Bid Requests</NavLink></li>
         </>
-        } */}
-        <li className=" py-2"><NavLink to='/addJob'>Add job</NavLink></li>
-        <li className=" py-2"><NavLink to='/postedJob'>My posted jobs</NavLink></li>
-        <li className=" py-2"><NavLink to='/bids'>My Bids</NavLink></li>
-        <li className=" py-2"><NavLink to='/bidsRequest'>Bid Requests</NavLink></li>
+        }
+        {!user && <>
+            <li className=" py-2"><NavLink to='/job'>Jobs</NavLink></li>
+            <li className=" py-2"><NavLink to='/company'>Company</NavLink></li>
+        </>
+        }
 
     </>
 

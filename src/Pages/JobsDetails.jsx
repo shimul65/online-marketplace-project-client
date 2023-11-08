@@ -47,6 +47,7 @@ const JobsDetails = () => {
             minimumPrice,
             maximumPrice,
             categoryName,
+            status: 'pending'
 
         }
         // console.log(bid);
@@ -178,12 +179,13 @@ const JobsDetails = () => {
                                         <Input size="lg" name="bidDeadline" required type="date" className="font-bold" color="indigo" label="Deadline" />
                                     </div>
                                 </div>
+                                {/* Bid on the project button */}
                                 {
                                     user?.email === employerEmail
                                         ?
                                         <input type="submit" value='Bid On the Project' className="btn flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" disabled />
                                         :
-                                        <input type="submit" value='Bid On the Project' className="customBtn flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
+                                        <input type="submit" value='Bid On the Project' className="customBtn cursor-pointer flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
                                 }
                             </form>
                         </div>
