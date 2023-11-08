@@ -116,6 +116,7 @@ const JobsDetails = () => {
             {/* job details with bid on project from */}
             <div className='md:bg-[#eff6f3] pt-20 pb-52'>
                 <div className="container mx-auto flex flex-col md:flex-row justify-center gap-5 items-center" >
+                    {/* job details */}
                     <div className="card flex-1 card-compact border border-gray-300 pt-10 pb-5 shadow-xl">
                         <div className='relative'>
                             <figure>
@@ -154,7 +155,7 @@ const JobsDetails = () => {
                             </div>
                         </div>
                     </div>
-
+                    {/*job bidding section */}
                     <div className=" flex-1 shadow-xl py-8 rounded-2xl  border border-gray-300">
                         <h2 className="text-3xl mb-10 md:text-4xl font-bold text-center">Place Your Bid : </h2>
                         <div className="mx-3">

@@ -1,18 +1,18 @@
 import axios from 'axios';
-import useAuth from '../Hook/useAuth';
 import banner2 from '../assets/banner-bg-3-0.png'
 import banner1 from '../assets/banner-bg-3.png'
 import { Input, Textarea } from "@material-tailwind/react";
 import Swal from 'sweetalert2';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLoaderData, useNavigate } from 'react-router-dom';
 
 const UpdateJobs = () => {
 
-    const { user } = useAuth();
+    const job = useLoaderData();
+    const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice, categoryName, employerEmail } = job;
 
     const navigate = useNavigate();
 
-    const handleAddJob = e => {
+    const handleUpdateJob = e => {
         e.preventDefault();
         const form = e.target;
         const jobTitle = form.title.value;
@@ -27,14 +27,14 @@ const UpdateJobs = () => {
         // console.log(job);
 
         // data send to server side
-        axios.post('http://localhost:5055/jobs', job)
+        axios.put(`http://localhost:5055/jobs/${_id}`, job)
             .then(res => {
                 console.log(res.data);
-                if (res.data.insertedId) {
+                if (res.data.modifiedCount) {
                     navigate('/postedJob')
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Your Job Added Successfully',
+                        text: 'Your Job Updated Successfully',
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
@@ -66,21 +66,21 @@ const UpdateJobs = () => {
                 </div>
             </div>
 
-            {/* add job form */}
+            {/* update job form */}
             <div className='md:bg-[#eff6f3] pt-20 pb-52'>
                 <div className="container mx-auto" >
                     <div className=" flex-1 shadow-xl py-16 rounded-2xl  border border-gray-300">
                         <h2 className="text-3xl mb-10 md:text-4xl font-bold text-center">Update Jobs : </h2>
                         <div className="mx-4 md:mx-16 lg:mx-32">
-                            <form onSubmit={handleAddJob} className='space-y-10'>
+                            <form onSubmit={handleUpdateJob} className='space-y-10'>
                                 {/* form row */}
                                 <div className="md:flex items-center gap-6">
                                     <div className=" w-full ">
-                                        <Input size="lg" name="employerEmail" required defaultValue={user?.email} className="font-bold" color="blue" label="Your Email" />
+                                        <Input size="lg" name="employerEmail" readOnly defaultValue={employerEmail} className="font-bold" color="blue" label="Your Email" />
                                     </div>
                                     <div className="form-control w-full mt-6 md:mt-0">
                                         <label>
-                                            <select className="input input-bordered w-full" name="category" required >
+                                            <select defaultValue={categoryName} className="input input-bordered w-full" name="category" required >
                                                 <option disabled >Select Brand Name</option>
                                                 <option>Web Development</option>
                                                 <option>Graphics Design</option>
@@ -92,28 +92,28 @@ const UpdateJobs = () => {
                                 {/* form row */}
                                 <div className="md:flex gap-6">
                                     <div className=" w-full  ">
-                                        <Input size="lg" type="text" required name="title" className="font-bold" color="purple" label="Job Title" />
+                                        <Input size="lg" type="text" defaultValue={jobTitle} required name="title" className="font-bold" color="purple" label="Job Title" />
                                     </div>
                                     <div className="form-control w-full mt-6 md:mt-0">
-                                        <Input size="lg" name="bidDeadline" required type="date" color="indigo" label="Deadline" />
+                                        <Input size="lg" defaultValue={deadline} name="bidDeadline" required type="date" color="indigo" label="Deadline" />
                                     </div>
                                 </div>
                                 {/* form row */}
                                 <div className="md:flex gap-6">
                                     <div className=" w-full ">
-                                        <Input size="lg" type="number" required name="minPrice" min={1} className="font-bold" color="purple" label="Minimum Price Range" />
+                                        <Input size="lg" type="number" defaultValue={minimumPrice} required name="minPrice" min={1} className="font-bold" color="purple" label="Minimum Price Range" />
                                     </div>
                                     <div className=" w-full mt-6 md:mt-0">
-                                        <Input size="lg" type="number" required name="maxPrice" min={1} className="font-bold" color="purple" label="Maximum Price Range" />
+                                        <Input size="lg" type="number" defaultValue={maximumPrice} required name="maxPrice" min={1} className="font-bold" color="purple" label="Maximum Price Range" />
                                     </div>
                                 </div>
                                 {/* form row */}
                                 <div className="md:flex gap-6">
                                     <div className=" w-full ">
-                                        <Textarea name='description' color="green" label="Job Description" />
+                                        <Textarea name='description' defaultValue={description} color="green" label="Job Description" />
                                     </div>
                                 </div>
-                                <input type="submit" value='Update Job' className="customBtn flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
+                                <input type="submit"  value='Update Job' className="customBtn flex cursor-pointer justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
                             </form>
                         </div>
                     </div>

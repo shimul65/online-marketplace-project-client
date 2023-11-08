@@ -75,7 +75,7 @@ const AddJob = () => {
                                 {/* form row */}
                                 <div className="md:flex items-center gap-6">
                                     <div className=" w-full ">
-                                        <Input size="lg" name="employerEmail" required defaultValue={user?.email} className="font-bold" color="blue" label="Your Email" />
+                                        <Input size="lg" name="employerEmail" readOnly defaultValue={user?.email} className="font-bold" color="blue" label="Your Email" />
                                     </div>
                                     <div className="form-control w-full mt-6 md:mt-0">
                                         <label>
@@ -112,7 +112,7 @@ const AddJob = () => {
                                         <Textarea name='description' color="green" label="Job Description" />
                                     </div>
                                 </div>
-                                <input type="submit" value='Add Job' className="customBtn flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
+                                <input type="submit" value='Add Job' className="customBtn flex justify-center items-center h-14 cursor-pointer  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
                             </form>
                         </div>
                     </div>
