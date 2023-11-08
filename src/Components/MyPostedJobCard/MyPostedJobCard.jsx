@@ -3,11 +3,62 @@ import web1 from '../../assets/web11.png'
 import web2 from '../../assets/web12.png'
 import web3 from '../../assets/web13.png'
 import { BsCurrencyDollar } from "react-icons/bs";
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const MyPostedJobCard = ({ job }) => {
 
     const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice, categoryName } = job;
 
+
+
+    // delete cart item
+    const handleDelete = _id => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axios.delete(`http://localhost:5055/jobs/${_id}`)
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your cart item has been deleted.',
+                                'success'
+                            )
+                            window.location.reload();
+                        }
+                    })
+
+                // fetch(`http://localhost:5055/jobs/${_id}`, {
+                //     method: 'DELETE',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     }
+                // })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         console.log(data)
+                //         if (data.deletedCount > 0) {
+                //             Swal.fire(
+                //                 'Deleted!',
+                //                 'Your cart item has been deleted.',
+                //                 'success'
+                //             )
+                //             window.location.reload();
+                //         }
+                //     })
+            }
+        })
+    }
 
     return (
         <div className="card card-compact border border-gray-300 pt-10 pb-5 shadow-xl hover:bg-[#F8FDE4] cursor-pointer">
@@ -53,9 +104,8 @@ const MyPostedJobCard = ({ job }) => {
                     <Link>
                         <button
                             className="customBtn flex justify-center items-center h-14  w-full rounded-full hover:text-black text-xs md:text-xl  border-none">Update</button></Link>
-                    <Link >
-                        <button style={{ background: '#ff4b01' }}
-                            className="customBtn flex justify-center items-center h-14  w-full rounded-full hover:text-black text-xs md:text-xl  border-none">Delete</button></Link>
+                    <button onClick={() => handleDelete(_id)} style={{ background: '#ff4b01' }}
+                        className="customBtn flex justify-center items-center h-14  w-full rounded-full hover:text-black text-xs md:text-xl  border-none">Delete</button>
                 </div>
             </div>
         </div>
