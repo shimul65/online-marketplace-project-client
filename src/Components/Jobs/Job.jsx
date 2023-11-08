@@ -3,9 +3,19 @@ import web1 from '../../assets/web11.png'
 import web2 from '../../assets/web12.png'
 import web3 from '../../assets/web13.png'
 import { BsCurrencyDollar } from "react-icons/bs";
-const Category = ({ category, tabIndex }) => {
+const Job = ({ job, tabIndex }) => {
 
-    const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice } = category;
+    const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice } = job;
+
+    // const currentDate = new Date();
+
+    // Get the year, month, and day
+    // const year = currentDate.getFullYear();
+    // const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    // const day = String(currentDate.getDate()).padStart(2, '0');
+    // const formattedDate = `${year}-${month}-${day}`;
+
+    // console.log(formattedDate);
 
     return (
         <div className="card card-compact border border-gray-300 pt-10 pb-5 shadow-xl ">
@@ -44,7 +54,7 @@ const Category = ({ category, tabIndex }) => {
                         <h1 className='text-lg font-medium'>Deadline: <span className="text-xl">{deadline}</span> </h1>
                     </div>
                 </div>
-                <Link to={`/services/${_id}`}>
+                <Link to={`/jobs/${_id}`}>
                     <button
                         className="customBtn flex justify-center items-center h-14  w-full rounded-full hover:text-black text-xs md:text-xl  border-none">Bid Now
                     </button></Link>
@@ -53,7 +63,7 @@ const Category = ({ category, tabIndex }) => {
     );
 };
 
-export default Category;
+export default Job;
 
 {/* {
     tabIndex === 0 && <img src={web1} alt="" />

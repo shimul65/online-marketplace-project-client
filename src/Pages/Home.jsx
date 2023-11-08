@@ -1,5 +1,5 @@
 import Banner from "../Components/Banner/Banner";
-import Categories from "../Components/Categories/Categories";
+import JobCategories from "../Components/Jobs/JobCategories";
 import Company from "../Components/Company/Company";
 import JobGuides from "../Components/JobGuides/JobGuides";
 import Question from "../Components/Question/Question";
@@ -13,7 +13,7 @@ const Home = () => {
             <div className="container mx-auto">
                 <Trusted></Trusted>
             </div>
-            <Categories></Categories>
+            <JobCategories></JobCategories>
             <div className="container mx-auto">
                 <JobGuides></JobGuides>
             </div>

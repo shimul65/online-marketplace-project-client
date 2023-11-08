@@ -2,18 +2,18 @@ import { useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { VscChevronRight } from 'react-icons/vsc';
 import axios from "axios";
-import Category from "./Category";
+import Job from "./Job";
 
 
-const Categories = () => {
+const JobCategories = () => {
 
     const [tabIndex, setTabIndex] = useState(0);
     // console.log(tabIndex);
 
-    const [categories, setCategories] = useState([]);
+    const [jobs, setJobs] = useState([]);
 
-    axios.get('http://localhost:5055/categories')
-        .then(res => setCategories(res.data))
+    axios.get('http://localhost:5055/jobs')
+        .then(res => setJobs(res.data))
     // console.log(categories);
 
     //category tab
@@ -35,14 +35,14 @@ const Categories = () => {
     }
 
 
-    const tabCategories = categories?.filter(category => category.categoryName === categoryName());
+    const categoriesWiseJobs = jobs?.filter(job => job.categoryName === categoryName());
 
     return (
         <div>
             <div className="md:bg-[#eff6f3] pt-24 pb-14 my-8">
                 <div className="container mx-auto" >
                     <div className="text-left mb-16 relative">
-                        <h1 className="text-6xl font-bold ml-2">Most Demanding Categories.</h1>
+                        <h1 className="text-6xl font-bold ml-2">Most Demanding Categories</h1>
                         <div className='flex items-center gap-2 text-[#04a44f] absolute md:right-10 md:top-[50%] mt-4 ml-4 md:mt-0 md:ml-0 hover:scale-105 ease-in-out duration-300'>
                             <p className='underline text-lg'>Explore More</p>
                             <div className='text-xl hover:scale-125 hover:rotate-[360deg] ease-in-out duration-500 '>
@@ -68,21 +68,21 @@ const Categories = () => {
                         <TabPanel>
                             <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-4 gap-5 mx-3 my-24 md:mx-0">
                                 {
-                                    tabCategories?.map(category => <Category key={category._id} category={category} tabIndex={tabIndex}></Category>)
+                                    categoriesWiseJobs?.map(job => <Job key={job._id} job={job} tabIndex={tabIndex}></Job>)
                                 }
                             </div >
                         </TabPanel>
                         <TabPanel>
                             <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-4 gap-5 mx-3 my-24 md:mx-0">
                                 {
-                                    tabCategories?.map(category => <Category key={category._id} category={category} tabIndex={tabIndex}></Category>)
+                                    categoriesWiseJobs?.map(job => <Job key={job._id} job={job} tabIndex={tabIndex}></Job>)
                                 }
                             </div>
                         </TabPanel>
                         <TabPanel>
                             <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-4 gap-5 mx-3 my-24 md:mx-0">
                                 {
-                                    tabCategories?.map(category => <Category key={category._id} category={category} tabIndex={tabIndex}></Category>)
+                                    categoriesWiseJobs?.map(job => <Job key={job._id} job={job} tabIndex={tabIndex}></Job>)
                                 }
                             </div>
                         </TabPanel>
@@ -93,4 +93,4 @@ const Categories = () => {
     );
 };
 
-export default Categories;
+export default JobCategories;
