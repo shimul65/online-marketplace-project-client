@@ -7,16 +7,6 @@ const Job = ({ job, tabIndex }) => {
 
     const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice } = job;
 
-    // const currentDate = new Date();
-
-    // Get the year, month, and day
-    // const year = currentDate.getFullYear();
-    // const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-    // const day = String(currentDate.getDate()).padStart(2, '0');
-    // const formattedDate = `${year}-${month}-${day}`;
-
-    // console.log(formattedDate);
-
     return (
         <div className="card card-compact border border-gray-300 pt-10 pb-5 shadow-xl hover:bg-[#F8FDE4] cursor-pointer">
             <div className='relative'>
@@ -64,20 +54,3 @@ const Job = ({ job, tabIndex }) => {
 };
 
 export default Job;
-
-{/* {
-    tabIndex === 0 && <img src={web1} alt="" />
-}
-{
-    tabIndex === 1 && <img src={web2} alt="" />
-}
-{
-    tabIndex === 2 && <img src={web3} alt="" />
-}
-<h3 className='mt-6 font-bold text-xl'>{jobTitle}</h3>
-<p className='my-3 text-lg'>Price Range: <span className='text-green-700 font-extrabold'> ${minimumPrice} - ${maximumPrice}</span></p>
-<p>Deadline: {deadline}</p>
-<p>{description}</p>
-<button className='customBtn rounded-full text-xl'>Bid Now</button> */}
-
-{/* border border-gray-300 rounded-lg shadow-lg p-10 */ }

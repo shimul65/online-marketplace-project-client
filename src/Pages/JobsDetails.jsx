@@ -24,6 +24,16 @@ const JobsDetails = () => {
     axios.get(`http://localhost:5055/bids?buyerEmail=${user?.email}`)
         .then(res => setBids(res.data))
 
+
+    const currentDate = new Date();
+
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+
+    const deadlineFinish = deadline < formattedDate;
+
     const handleBidJob = e => {
 
         e.preventDefault();
@@ -181,7 +191,8 @@ const JobsDetails = () => {
                                 </div>
                                 {/* Bid on the project button */}
                                 {
-                                    user?.email === employerEmail
+
+                                    user.email === employerEmail || deadlineFinish
                                         ?
                                         <input type="submit" value='Bid On the Project' className="btn flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" disabled />
                                         :
@@ -202,3 +213,5 @@ const JobsDetails = () => {
 };
 
 export default JobsDetails;
+//
+// user?.email === employerEmail
