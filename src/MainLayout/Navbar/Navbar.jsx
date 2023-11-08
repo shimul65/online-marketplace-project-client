@@ -92,7 +92,7 @@ const Navbar = () => {
                                     </li>
                                     <li>
                                         <button onClick={handleLogOut}
-                                            className="customBtn rounded-full text-center py-0">LOG OUT</button>
+                                            className="customBtn flex items-center justify-center h-10 rounded-full text-center py-0">LOG OUT</button>
 
                                     </li>
                                 </ul>

@@ -7,6 +7,8 @@ import web1 from '../assets/web11.png'
 import web2 from '../assets/web12.png'
 import web3 from '../assets/web13.png'
 import { Input } from "@material-tailwind/react";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const JobsDetails = () => {
@@ -14,6 +16,50 @@ const JobsDetails = () => {
     const job = useLoaderData();
     const { user } = useAuth();
     const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice, categoryName, employerEmail } = job;
+
+    const handleBidJob = e => {
+
+        e.preventDefault();
+
+        const form = e.target;
+        const buyerEmail = form.buyerEmail.value;
+        const employerEmail = form.employerEmail.value;
+        const bidDeadline = form.bidDeadline.value;
+        const biddingPrice = form.price.value;
+
+
+        const bid = {
+            buyerEmail,
+            employerEmail,
+            bidDeadline,
+            biddingPrice: parseInt(biddingPrice),
+            jobId: _id,
+            jobTitle,
+            deadline,
+            description,
+            minimumPrice,
+            maximumPrice,
+            categoryName,
+
+        }
+        // console.log(bid);
+
+        axios.post('http://localhost:5055/bids', bid)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Your Bid added successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+
+            })
+
+    }
+
 
     return (
         <>
@@ -79,25 +125,24 @@ const JobsDetails = () => {
                     <div className=" flex-1 shadow-xl py-8 rounded-2xl  border border-gray-300">
                         <h2 className="text-3xl mb-10 md:text-4xl font-bold text-center">Place Your Bid : </h2>
                         <div className="mx-3">
-                            <form >
+                            <form onSubmit={handleBidJob}>
                                 {/* form row */}
                                 <div className="md:flex items-center gap-6">
                                     <div className=" w-full ">
-                                        <Input size="lg" className="font-bold" color="blue" label="Your Email" />
+                                        <Input size="lg" name="buyerEmail" readOnly className="font-bold" color="blue" value={user?.email} label="Your Email" />
                                     </div>
                                     <div className=" w-full ">
-                                        <Input size="lg" readOnly value={employerEmail} className="font-bold" color="green" label="Employer Email" />
+                                        <Input size="lg" name="employerEmail" readOnly value={employerEmail} className="font-bold" color="green" label="Employer Email" />
                                     </div>
                                 </div>
                                 {/* form row */}
                                 <div className="md:flex gap-6 my-5">
                                     <div className=" w-full ">
-                                        <Input size="lg" type="number" min={1} className="font-bold" color="purple" label="Your Bidding Price" />
+                                        <Input size="lg" type="number" required name="price" min={minimumPrice} max={maximumPrice} className="font-bold" color="purple" label="Your Bidding Price" />
                                     </div>
                                     <div className="form-control w-full">
-                                        <Input size="lg" type="date" className="font-bold" color="indigo" label="Deadline" />
+                                        <Input size="lg" name="bidDeadline" required type="date" className="font-bold" color="indigo" label="Deadline" />
                                     </div>
-
                                 </div>
                                 <input type="submit" value='Bid On the Project' className="customBtn flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
                             </form>
