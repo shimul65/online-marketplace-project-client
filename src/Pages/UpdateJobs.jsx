@@ -27,7 +27,7 @@ const UpdateJobs = () => {
         // console.log(job);
 
         // data send to server side
-        axios.put(`http://localhost:5055/jobs/${_id}`, job)
+        axios.put(`https://online-marketplace-client.vercel.app/jobs/${_id}`, job)
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount) {

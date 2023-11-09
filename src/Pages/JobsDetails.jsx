@@ -21,7 +21,7 @@ const JobsDetails = () => {
 
     const [bids, setBids] = useState([]);
 
-    axios.get(`http://localhost:5055/bids?buyerEmail=${user?.email}`)
+    axios.get(`https://online-marketplace-client.vercel.app/bids?buyerEmail=${user?.email}`)
         .then(res => setBids(res.data))
 
 
@@ -77,7 +77,7 @@ const JobsDetails = () => {
             });
         }
         else {
-            axios.post('http://localhost:5055/bids', bid)
+            axios.post('https://online-marketplace-client.vercel.app/bids', bid)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.insertedId) {

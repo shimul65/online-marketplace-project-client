@@ -23,7 +23,7 @@ const MyPostedJobCard = ({ job }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`http://localhost:5055/jobs/${_id}`)
+                axios.delete(`https://online-marketplace-client.vercel.app/jobs/${_id}`)
                     .then(res => {
                         console.log(res.data);
                         if (res.data.deletedCount > 0) {

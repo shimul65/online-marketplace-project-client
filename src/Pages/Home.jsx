@@ -4,7 +4,6 @@ import Company from "../Components/Company/Company";
 import JobGuides from "../Components/JobGuides/JobGuides";
 import Question from "../Components/Question/Question";
 import Trusted from "../Components/Trusted/Trusted";
-import Spin from "../Components/Spin/Spin";
 import { Helmet } from "react-helmet-async";
 
 const Home = () => {

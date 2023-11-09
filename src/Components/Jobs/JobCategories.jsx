@@ -17,7 +17,7 @@ const JobCategories = () => {
 
         queryKey: ['jobs'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:5055/jobs')
+            const res = await axios.get('https://online-marketplace-client.vercel.app/jobs')
             return res.data;
         }
     })

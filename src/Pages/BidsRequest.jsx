@@ -36,7 +36,7 @@ const BidsRequest = () => {
 
         const updateStatus = { bidStatus: 'canceled', bidRequestStatus: 'rejected' }
 
-        axios.patch(`http://localhost:5055/bids/${id}`, updateStatus)
+        axios.patch(`https://online-marketplace-client.vercel.app/bids/${id}`, updateStatus)
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
@@ -50,7 +50,7 @@ const BidsRequest = () => {
 
         const updateStatus = { bidStatus: 'in progress', bidRequestStatus: 'in progress' }
 
-        axios.patch(`http://localhost:5055/bids/${_id}`, updateStatus)
+        axios.patch(`https://online-marketplace-client.vercel.app/bids/${_id}`, updateStatus)
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {

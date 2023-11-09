@@ -39,12 +39,12 @@ const router = createBrowserRouter([
             {
                 path: "/jobs/:id",
                 element: <PrivateRoutes><JobsDetails></JobsDetails></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5055/jobs/${params.id}`)
+                loader: ({ params }) => fetch(`https://online-marketplace-client.vercel.app/jobs/${params.id}`)
             },
             {
                 path: "/updatedJob/:id",
                 element: <PrivateRoutes><UpdateJobs></UpdateJobs></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5055/jobs/${params.id}`)
+                loader: ({ params }) => fetch(`https://online-marketplace-client.vercel.app/jobs/${params.id}`)
             },
             {
                 path: "/postedJob",

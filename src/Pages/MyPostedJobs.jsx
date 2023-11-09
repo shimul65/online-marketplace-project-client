@@ -20,7 +20,7 @@ const MyPostedJobs = () => {
 
         queryKey: ['jobs'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5055/jobs?employerEmail=${user?.email}`)
+            const res = await axios.get(`https://online-marketplace-client.vercel.app/jobs?employerEmail=${user?.email}`)
             return res.data;
         }
     })

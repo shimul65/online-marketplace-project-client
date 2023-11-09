@@ -34,7 +34,7 @@ const MyBids = () => {
         const updateStatus = { bidStatus: 'complete', bidRequestStatus: 'complete' }
 
         // send updated status to backend using axios
-        axios.patch(`http://localhost:5055/bids/${id}`, updateStatus)
+        axios.patch(`https://online-marketplace-client.vercel.app/bids/${id}`, updateStatus)
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {

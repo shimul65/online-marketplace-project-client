@@ -28,7 +28,7 @@ const AddJob = () => {
         // console.log(job);
 
         // data send to server side
-        axios.post('http://localhost:5055/jobs', job)
+        axios.post('https://online-marketplace-client.vercel.app/jobs', job)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {

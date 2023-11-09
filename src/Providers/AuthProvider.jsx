@@ -50,13 +50,13 @@ const AuthProvider = ({ children }) => {
 
             //if user exists then issue a token
             if (currentUser) {
-                axios.post('http://localhost:5055/jwt', loggedUser, { withCredentials: true })
+                axios.post('https://online-marketplace-client.vercel.app/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                     })
             }
             else {
-                axios.post('http://localhost:5055/logout', loggedUser, { withCredentials: true })
+                axios.post('https://online-marketplace-client.vercel.app/logout', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                     })
