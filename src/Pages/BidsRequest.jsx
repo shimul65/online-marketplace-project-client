@@ -1,6 +1,5 @@
 import axios from "axios";
 import useAuth from "../Hook/useAuth";
-import { useEffect, useState } from "react";
 import banner2 from '../assets/banner-bg-3-0.png'
 import banner1 from '../assets/banner-bg-3.png'
 import { VscChevronRight } from 'react-icons/vsc';
@@ -8,11 +7,13 @@ import { IoCloudDone } from 'react-icons/io5';
 import web1 from '../assets/web11.png'
 import web2 from '../assets/web12.png'
 import web3 from '../assets/web13.png'
-import toast from "react-hot-toast";
 import { Progress } from "@material-tailwind/react";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import Spin from "../Components/Spin/Spin";
+import Loader from "../Components/Loader/Loader";
+import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 const BidsRequest = () => {
 
@@ -20,14 +21,21 @@ const BidsRequest = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const [myBidRequests, setMyBidRequests] = useState([]);
+    //get bidsRequest data from server for specific user using tanstackQuery
+    const { data: myBidRequests, isPending, isError, error } = useQuery({
 
-    useEffect(() => {
-
-        axiosSecure.get(`/bids?employerEmail=${user?.email}`)
-            .then(res => setMyBidRequests(res.data))
-
-    }, [axiosSecure, user?.email])
+        queryKey: ['jobs'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/bids?employerEmail=${user?.email}`)
+            return res.data;
+        }
+    })
+    if (isPending) {
+        return <Loader></Loader>
+    }
+    if (isError) {
+        return <span>Error : {error.message}</span>
+    }
 
 
 
@@ -40,7 +48,17 @@ const BidsRequest = () => {
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
-                    toast.success('Job Bid rejected successfully')
+                    // toast.success('Job Bid Rejected successfully')
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Bid request reject successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.reload();
+                        }
+                    });
                 }
             })
     }
@@ -54,7 +72,17 @@ const BidsRequest = () => {
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
-                    toast.success('Job Bid Accept successfully')
+                    // toast.success('Job Bid Accept successfully')
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Bid request accept successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.reload();
+                        }
+                    });
                 }
             })
     }
@@ -96,7 +124,7 @@ const BidsRequest = () => {
                     </div>
                 </div>
                 {
-                    myBidRequests.length === 0
+                    myBidRequests?.length === 0
                         ?
                         <div className="text-center mb-10 ">
                             <p className='font-bold text-3xl text-red-500'>&#34; There is no bid request in your job &#34;</p>

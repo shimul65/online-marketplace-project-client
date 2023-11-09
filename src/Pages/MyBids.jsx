@@ -1,6 +1,5 @@
 import axios from "axios";
 import useAuth from "../Hook/useAuth";
-import { useEffect, useState } from "react";
 import banner2 from '../assets/banner-bg-3-0.png'
 import banner1 from '../assets/banner-bg-3.png'
 import { VscChevronRight } from 'react-icons/vsc';
@@ -12,21 +11,30 @@ import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import Spin from "../Components/Spin/Spin";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../Components/Loader/Loader";
 
 const MyBids = () => {
 
     // custom hook
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
-    const [myBids, setMyBids] = useState([]);
 
+    //get bidsRequest data from server for specific user using tanstackQuery
+    const { data: myBids, isPending, isError, error } = useQuery({
 
-    useEffect(() => {
-
-        axiosSecure.get(`/bids?buyerEmail=${user?.email}`)
-            .then(res => setMyBids(res.data))
-
-    }, [axiosSecure, user?.email])
+        queryKey: ['jobs'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/bids?buyerEmail=${user?.email}`)
+            return res.data;
+        }
+    })
+    if (isPending) {
+        return <Loader></Loader>
+    }
+    if (isError) {
+        return <span>Error : {error.message}</span>
+    }
 
     // handler complete btn
     const handelComplete = id => {
@@ -81,7 +89,7 @@ const MyBids = () => {
                     </div>
                 </div>
                 {
-                    myBids.length === 0
+                    myBids?.length === 0
                         ?
                         <div className="text-center mb-10 ">
                             <p className='font-bold text-3xl text-red-500'>&#34; You haven&#39;t bid any job yet &#34;</p>
