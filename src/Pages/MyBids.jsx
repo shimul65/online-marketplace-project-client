@@ -1,6 +1,6 @@
 import axios from "axios";
 import useAuth from "../Hook/useAuth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import banner2 from '../assets/banner-bg-3-0.png'
 import banner1 from '../assets/banner-bg-3.png'
 // import MyPostedJobCard from '../Components/MyPostedJobCard/MyPostedJobCard';
@@ -12,6 +12,7 @@ import web2 from '../assets/web12.png'
 import web3 from '../assets/web13.png'
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../Hook/useAxiosSecure";
 
 // bidDeadline
 // biddingPrice
@@ -31,13 +32,21 @@ import { Helmet } from "react-helmet-async";
 
 const MyBids = () => {
 
-
-
+    // custom hook
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
     const [myBids, setMyBids] = useState([]);
 
-    axios.get(`http://localhost:5055/bids?buyerEmail=${user?.email}`)
-        .then(res => setMyBids(res.data))
+
+    useEffect(() => {
+
+        axiosSecure.get(`/bids?buyerEmail=${user?.email}`)
+            .then(res => setMyBids(res.data))
+            
+        // axiosSecure.get(`/jobs?employerEmail=${user?.email}`)
+        //     .then(res => setMyPostedJobs(res.data))
+
+    }, [axiosSecure, user?.email])
 
     // handler complete btn
     const handelComplete = id => {

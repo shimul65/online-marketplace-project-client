@@ -1,30 +1,33 @@
-// import axios from 'axios';
-// import useAuth from '../Hook/useAuth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useAuth from '../Hook/useAuth';
 import banner2 from '../assets/banner-bg-3-0.png'
 import banner1 from '../assets/banner-bg-3.png'
-import axios from 'axios';
 import MyPostedJobCard from '../Components/MyPostedJobCard/MyPostedJobCard';
 import { VscChevronRight } from 'react-icons/vsc';
 import { Helmet } from 'react-helmet-async';
-// import { Input, Textarea } from "@material-tailwind/react";
-// import Swal from 'sweetalert2';
-// import { useNavigate } from 'react-router-dom';
+import useAxiosSecure from '../Hook/useAxiosSecure';
 
 const MyPostedJobs = () => {
 
+    // custom hook
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
+
     const [myPostedJobs, setMyPostedJobs] = useState([]);
 
-    axios.get(`http://localhost:5055/jobs?employerEmail=${user?.email}`)
-        .then(res => setMyPostedJobs(res.data))
+    useEffect(() => {
+
+        axiosSecure.get(`/jobs?employerEmail=${user?.email}`)
+            .then(res => setMyPostedJobs(res.data))
+
+    }, [axiosSecure, user?.email])
+
 
 
     return (
         <>
             <Helmet>
-            <link rel="icon" type="image/svg+xml" href="../../public/fav4.jpg" />
+                <link rel="icon" type="image/svg+xml" href="../../public/fav4.jpg" />
                 <title>Jobi Online Marketplace || Posted Job</title>
             </Helmet>
             {/* banner */}
