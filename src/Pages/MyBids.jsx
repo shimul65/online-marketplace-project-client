@@ -7,7 +7,6 @@ import { IoCheckmarkDone } from 'react-icons/io5';
 import web1 from '../assets/web11.png'
 import web2 from '../assets/web12.png'
 import web3 from '../assets/web13.png'
-import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import Spin from "../Components/Spin/Spin";
