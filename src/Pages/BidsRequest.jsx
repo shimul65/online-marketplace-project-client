@@ -48,7 +48,6 @@ const BidsRequest = () => {
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
-                    // toast.success('Job Bid Rejected successfully')
                     Swal.fire({
                         title: 'Success!',
                         text: 'Bid request reject successfully',
@@ -72,7 +71,6 @@ const BidsRequest = () => {
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
-                    // toast.success('Job Bid Accept successfully')
                     Swal.fire({
                         title: 'Success!',
                         text: 'Bid request accept successfully',

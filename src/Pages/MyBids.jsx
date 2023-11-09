@@ -13,6 +13,7 @@ import useAxiosSecure from "../Hook/useAxiosSecure";
 import Spin from "../Components/Spin/Spin";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../Components/Loader/Loader";
+import Swal from "sweetalert2";
 
 const MyBids = () => {
 
@@ -46,7 +47,16 @@ const MyBids = () => {
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
-                    toast.success('Job Bid Accept successfully')
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Job Bid Accept successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.reload();
+                        }
+                    });
                 }
             })
     }
