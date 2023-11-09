@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import { Progress } from "@material-tailwind/react";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../Hook/useAxiosSecure";
+import { BsEmojiSunglasses } from 'react-icons/bs';
 
 const BidsRequest = () => {
 
@@ -94,95 +95,104 @@ const BidsRequest = () => {
                         </div>
                     </div>
                 </div>
-                <div className=' container mx-auto pt-5 md:pt-0 '>
-                    <div className="overflow-x-auto mb-28">
-                        <table className="table text-center">
-                            {/* head */}
-                            <thead>
-                                <tr className='text-center text-base md:text-xl'>
-                                    <th className='text-left lg:pl-[120px]'>Job Title</th>
-                                    <th className='text-left lg:pl-[120px] '>Buyer Email</th>
-                                    <th className="">Deadline</th>
-                                    <th>Price</th>
-                                    <th>Status</th>
-                                    <th>Confirmation</th>
-                                </tr>
-                            </thead>
-                            <tbody className="">
-                                {
-                                    myBidRequests?.map(myBid =>
-                                        <tr key={myBid._id}>
-                                            <td className=" ">
-                                                <div className="flex flex-col lg:flex-row  items-center lg:space-x-3">
-                                                    <div className="avatar md:mr-4">
-                                                        <div className=" w-10 h-10 lg:w-16 lg:h-16">
-                                                            {
-                                                                myBid.categoryName === 'Web Development' &&
-                                                                <img src={web1} />
-                                                            }
-                                                            {
-                                                                myBid.categoryName === 'Graphics Design' &&
-                                                                <img src={web2} />
-                                                            }
-                                                            {
-                                                                myBid.categoryName === 'Digital Marketing' &&
-                                                                <img src={web3} />
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                    <div className="">
-                                                        <div className="font-bold text-base md:text-xl">{myBid?.jobTitle}</div>
-                                                        <div className="text-sm md:text-base mt-2 block md:hidden font-bold text-center ">{myBid?.buyerEmail}</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td className="hidden mt-10 lg:block ">
-                                                <div className="text-xl font-bold text-center ">{myBid?.buyerEmail}</div>
-                                            </td>
-                                            <td className="text-sm md:text-lg font-semibold">
-                                                <div>
-                                                    <p><span className="text-base font-medium">Job Deadline:</span> {myBid?.deadline}</p>
-                                                    <p><span className="text-base font-medium">Bid Deadline:</span> {myBid?.bidDeadline}</p>
-                                                </div>
-                                            </td>
-                                            <td className="text-sm md:text-lg  font-semibold">$ {myBid?.biddingPrice}</td>
-
-                                            {myBid.bidRequestStatus === 'rejected' &&
-                                                < td className="text-sm md:text-lg  font-semibold text-red-500">Rejected</td>
-                                            }
-                                            {myBid.bidRequestStatus === 'in progress' &&
-                                                < td className="text-sm md:text-lg  font-semibold text-blue-500">In Progress..</td>
-                                            }
-                                            {myBid.bidRequestStatus === 'pending' &&
-                                                <td className="text-sm md:text-lg  font-semibold">Pending</td>
-                                            }
-                                            {myBid.bidRequestStatus === 'complete' &&
-                                                <td className="text-sm md:text-lg text-green-500  font-semibold">Completed</td>
-                                            }
-                                            <th>
-                                                {myBid.bidRequestStatus === 'rejected' && ''}
-                                                {myBid.bidRequestStatus === 'in progress' && <div>
-                                                    <Progress style={{ fontSize: '11px', height: '25px', }} color="blue" size="sm" value={75} label="Completed" /></div>}
-                                                {myBid.bidRequestStatus === 'pending' &&
-                                                    <div onClick={() => handleReject(myBid._id)} className="flex flex-col gap-2">
-                                                        <button style={{ padding: '0px 0px', background: '#ff4b01' }}
-                                                            className="customBtn btn flex justify-center items-center rounded-full font-medium hover:text-black text-xs md:text-lg  border-none" >Reject</button>
-
-                                                        <button onClick={() => handelAccept(myBid._id)} style={{ padding: '0px 2px', }}
-                                                            className="customBtn btn flex justify-center items-center rounded-full font-medium hover:text-black text-base  border-none">Accept</button>
-                                                    </div>}
-                                                {myBid.bidRequestStatus === 'complete' &&
-                                                    <div className="text-4xl text-green-700 hover:scale-110 duration-300 flex justify-center ease-in-out">
-                                                        <IoCloudDone></IoCloudDone></div>}
-
-                                            </th>
+                {
+                    myBidRequests.length === 0
+                        ?
+                        <div className="text-center mb-10 ">
+                            <p className='font-bold text-3xl text-red-500'>&#34; There is no bid request in your job &#34;</p>
+                            <div className='flex justify-center items-center mt-5 text-5xl text-green-600'><BsEmojiSunglasses></BsEmojiSunglasses></div>
+                        </div>
+                        :
+                        <div className=' container mx-auto pt-5 md:pt-0 '>
+                            <div className="overflow-x-auto mb-28">
+                                <table className="table text-center">
+                                    {/* head */}
+                                    <thead>
+                                        <tr className='text-center text-base md:text-xl'>
+                                            <th className='text-left lg:pl-[120px]'>Job Title</th>
+                                            <th className='text-left lg:pl-[120px] '>Buyer Email</th>
+                                            <th className="">Deadline</th>
+                                            <th>Price</th>
+                                            <th>Status</th>
+                                            <th>Confirmation</th>
                                         </tr>
-                                    )
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                                    </thead>
+                                    <tbody className="">
+                                        {
+                                            myBidRequests?.map(myBid =>
+                                                <tr key={myBid._id}>
+                                                    <td className=" ">
+                                                        <div className="flex flex-col lg:flex-row  items-center lg:space-x-3">
+                                                            <div className="avatar md:mr-4">
+                                                                <div className=" w-10 h-10 lg:w-16 lg:h-16">
+                                                                    {
+                                                                        myBid.categoryName === 'Web Development' &&
+                                                                        <img src={web1} />
+                                                                    }
+                                                                    {
+                                                                        myBid.categoryName === 'Graphics Design' &&
+                                                                        <img src={web2} />
+                                                                    }
+                                                                    {
+                                                                        myBid.categoryName === 'Digital Marketing' &&
+                                                                        <img src={web3} />
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                            <div className="">
+                                                                <div className="font-bold text-base md:text-xl">{myBid?.jobTitle}</div>
+                                                                <div className="text-sm md:text-base mt-2 block md:hidden font-bold text-center ">{myBid?.buyerEmail}</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td className="hidden mt-10 lg:block ">
+                                                        <div className="text-xl font-bold text-center ">{myBid?.buyerEmail}</div>
+                                                    </td>
+                                                    <td className="text-sm md:text-lg font-semibold">
+                                                        <div>
+                                                            <p><span className="text-base font-medium">Job Deadline:</span> {myBid?.deadline}</p>
+                                                            <p><span className="text-base font-medium">Bid Deadline:</span> {myBid?.bidDeadline}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td className="text-sm md:text-lg  font-semibold">$ {myBid?.biddingPrice}</td>
+
+                                                    {myBid.bidRequestStatus === 'rejected' &&
+                                                        < td className="text-sm md:text-lg  font-semibold text-red-500">Rejected</td>
+                                                    }
+                                                    {myBid.bidRequestStatus === 'in progress' &&
+                                                        < td className="text-sm md:text-lg  font-semibold text-blue-500">In Progress..</td>
+                                                    }
+                                                    {myBid.bidRequestStatus === 'pending' &&
+                                                        <td className="text-sm md:text-lg  font-semibold">Pending</td>
+                                                    }
+                                                    {myBid.bidRequestStatus === 'complete' &&
+                                                        <td className="text-sm md:text-lg text-green-500  font-semibold">Completed</td>
+                                                    }
+                                                    <th>
+                                                        {myBid.bidRequestStatus === 'rejected' && ''}
+                                                        {myBid.bidRequestStatus === 'in progress' && <div>
+                                                            <Progress style={{ fontSize: '11px', height: '25px', }} color="blue" size="sm" value={75} label="Completed" /></div>}
+                                                        {myBid.bidRequestStatus === 'pending' &&
+                                                            <div onClick={() => handleReject(myBid._id)} className="flex flex-col gap-2">
+                                                                <button style={{ padding: '0px 0px', background: '#ff4b01' }}
+                                                                    className="customBtn btn flex justify-center items-center rounded-full font-medium hover:text-black text-xs md:text-lg  border-none" >Reject</button>
+
+                                                                <button onClick={() => handelAccept(myBid._id)} style={{ padding: '0px 2px', }}
+                                                                    className="customBtn btn flex justify-center items-center rounded-full font-medium hover:text-black text-base  border-none">Accept</button>
+                                                            </div>}
+                                                        {myBid.bidRequestStatus === 'complete' &&
+                                                            <div className="text-4xl text-green-700 hover:scale-110 duration-300 flex justify-center ease-in-out">
+                                                                <IoCloudDone></IoCloudDone></div>}
+
+                                                    </th>
+                                                </tr>
+                                            )
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                }
             </div >
         </>
     );

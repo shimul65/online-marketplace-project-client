@@ -4,22 +4,30 @@ import { VscChevronRight } from 'react-icons/vsc';
 import axios from "axios";
 import Job from "./Job";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../Loader/Loader";
 
 
 const JobCategories = () => {
 
     const [tabIndex, setTabIndex] = useState(0);
-    // console.log(tabIndex);
 
-    const [jobs, setJobs] = useState([]);
+    //get jobs data from server using tanstackQuery
+    const { data: jobs, isPending, isError, error } = useQuery({
 
-    axios.get('http://localhost:5055/jobs')
-        .then(res => setJobs(res.data))
-    // console.log(categories);
-
-    //category tab
-
-    // const categoryName = tabIndex === 0 ? 'Web Development' : '';
+        queryKey: ['jobs'],
+        queryFn: async () => {
+            const res = await axios.get('http://localhost:5055/jobs')
+            return res.data;
+        }
+    })
+    if (isPending) {
+        return <Loader></Loader>
+    }
+    if (isError) {
+        return <span>Error : {error.message}</span>
+    }
+    // console.log(jobs);
 
     const categoryName = () => {
         let categoryName = '';
@@ -34,7 +42,6 @@ const JobCategories = () => {
         }
         return categoryName;
     }
-
 
     const categoriesWiseJobs = jobs?.filter(job => job.categoryName === categoryName());
 

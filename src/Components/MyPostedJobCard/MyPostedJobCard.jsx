@@ -10,9 +10,7 @@ const MyPostedJobCard = ({ job }) => {
 
     const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice, categoryName } = job;
 
-
-
-    // delete cart item
+    // delete job
     const handleDelete = _id => {
         Swal.fire({
             title: 'Are you sure?',
