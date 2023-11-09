@@ -4,23 +4,16 @@ import banner2 from '../assets/banner-bg-3-0.png'
 import banner1 from '../assets/banner-bg-3.png'
 import MyPostedJobCard from '../Components/MyPostedJobCard/MyPostedJobCard';
 import { VscChevronRight } from 'react-icons/vsc';
-import { BsEmojiSunglasses } from 'react-icons/bs';
 import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
 import Loader from '../Components/Loader/Loader';
 import { useQuery } from "@tanstack/react-query";
+import Spin from '../Components/Spin/Spin';
 
 const MyPostedJobs = () => {
 
     // custom hook
     const { user } = useAuth();
-
-    // const [myPostedJobs, setMyPostedJobs] = useState([]);
-    // // console.log(myPostedJobs);
-
-    // axios.get(`http://localhost:5055/jobs?employerEmail=${user?.email}`)
-    //     .then(res => setMyPostedJobs(res.data))
-
 
     //get jobs data from server using tanstackQuery
     const { data: myPostedJobs, isPending, isError, error } = useQuery({
@@ -82,7 +75,9 @@ const MyPostedJobs = () => {
 
                             <div className="text-center mb-10 ">
                                 <p className='font-bold text-3xl text-red-500'>&#34; You haven&#39;t posted any job yet &#34;</p>
-                                <div className='flex justify-center items-center mt-5 text-5xl text-green-600'><BsEmojiSunglasses></BsEmojiSunglasses></div>
+                                <div className=" flex justify-center items-center">
+                                <Spin></Spin>
+                            </div>
                             </div>
                             :
                             <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-4 gap-5 mx-3 mb-20 md:mx-0 ">

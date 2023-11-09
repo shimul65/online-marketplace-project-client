@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import { Progress } from "@material-tailwind/react";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../Hook/useAxiosSecure";
-import { BsEmojiSunglasses } from 'react-icons/bs';
+import Spin from "../Components/Spin/Spin";
 
 const BidsRequest = () => {
 
@@ -100,7 +100,9 @@ const BidsRequest = () => {
                         ?
                         <div className="text-center mb-10 ">
                             <p className='font-bold text-3xl text-red-500'>&#34; There is no bid request in your job &#34;</p>
-                            <div className='flex justify-center items-center mt-5 text-5xl text-green-600'><BsEmojiSunglasses></BsEmojiSunglasses></div>
+                            <div className=" flex justify-center items-center">
+                                <Spin></Spin>
+                            </div>
                         </div>
                         :
                         <div className=' container mx-auto pt-5 md:pt-0 '>
