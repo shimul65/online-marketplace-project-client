@@ -11,6 +11,7 @@ import web1 from '../assets/web11.png'
 import web2 from '../assets/web12.png'
 import web3 from '../assets/web13.png'
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 // bidDeadline
 // biddingPrice
@@ -56,6 +57,10 @@ const MyBids = () => {
 
     return (
         <>
+            <Helmet>
+                <link rel="icon" type="image/svg+xml" href="../../public/fav2.jpg" />
+                <title>Jobi Online Marketplace || Bids</title>
+            </Helmet>
             {/* banner */}
             <div className="carousel w-full relative rounded-b-lg md:h-[200px] lg:h-[350px]" style={{ backgroundImage: `url(${banner1})`, backgroundSize: '100% 100%' }}>
                 <div className="carousel-ite container mx-auto  rounded-2xl hero relative w-full overflow-hidden"

@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import media1 from '../../assets/media_29.png'
 import media2 from '../../assets/media_30.png'
 import media3 from '../../assets/media_31.png'
@@ -7,6 +8,10 @@ import { VscChevronRight } from 'react-icons/vsc';
 const Company = () => {
     return (
         <div className="md:bg-[#eff6f3] py-24 mt-8">
+            <Helmet>
+                <link rel="icon" type="image/svg+xml" href="../../public/logo_04.png" />
+                <title>Jobi Online Marketplace || Add JOb</title>
+            </Helmet>
             <div className="container mx-auto" >
                 <div className="text-left mb-16 relative">
                     <h1 className="text-6xl font-bold ml-2">Top Company</h1>

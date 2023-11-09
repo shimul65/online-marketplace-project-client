@@ -7,6 +7,7 @@ import banner1 from '../assets/banner-bg-3.png'
 import axios from 'axios';
 import MyPostedJobCard from '../Components/MyPostedJobCard/MyPostedJobCard';
 import { VscChevronRight } from 'react-icons/vsc';
+import { Helmet } from 'react-helmet-async';
 // import { Input, Textarea } from "@material-tailwind/react";
 // import Swal from 'sweetalert2';
 // import { useNavigate } from 'react-router-dom';
@@ -22,6 +23,10 @@ const MyPostedJobs = () => {
 
     return (
         <>
+            <Helmet>
+            <link rel="icon" type="image/svg+xml" href="../../public/fav4.jpg" />
+                <title>Jobi Online Marketplace || Posted Job</title>
+            </Helmet>
             {/* banner */}
             <div className="carousel w-full relative rounded-b-lg md:h-[200px] lg:h-[350px]" style={{ backgroundImage: `url(${banner1})`, backgroundSize: '100% 100%' }}>
                 <div className="carousel-ite container mx-auto  rounded-2xl hero relative w-full overflow-hidden"

@@ -1,4 +1,4 @@
-import { NavLink, useLoaderData, useNavigate } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import banner2 from '../assets/banner-bg-3-0.png'
 import banner1 from '../assets/banner-bg-3.png'
@@ -15,7 +15,7 @@ import toast from "react-hot-toast";
 
 const JobsDetails = () => {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const job = useLoaderData();
     const { user } = useAuth();
     const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice, categoryName, employerEmail } = job;
@@ -92,7 +92,8 @@ const JobsDetails = () => {
                             confirmButtonText: 'Cool'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                navigate('/bids');
+                                // navigate('/bids');
+                                window.history.back();
                             }
                         });
                     }

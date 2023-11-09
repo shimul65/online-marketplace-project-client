@@ -3,6 +3,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { VscChevronRight } from 'react-icons/vsc';
 import axios from "axios";
 import Job from "./Job";
+import { Helmet } from "react-helmet-async";
 
 
 const JobCategories = () => {
@@ -39,6 +40,10 @@ const JobCategories = () => {
 
     return (
         <div>
+            <Helmet>
+                <link rel="icon" type="image/svg+xml" href="../../../public/loader.svg" />
+                <title>Jobi Online Marketplace || Job Categories</title>
+            </Helmet>
             <div className="md:bg-[#eff6f3] pt-24 pb-14 my-8">
                 <div className="container mx-auto" >
                     <div className="text-left mb-16 relative">

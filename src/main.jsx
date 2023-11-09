@@ -7,14 +7,17 @@ import {
 import router from './Routes/Routes';
 import { ThemeProvider } from "@material-tailwind/react";
 import AuthProvider from './Providers/AuthProvider';
+import { HelmetProvider } from 'react-helmet-async';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </ThemeProvider>
+    </HelmetProvider>
   </React.StrictMode>,
 )
 

@@ -11,6 +11,7 @@ import web2 from '../assets/web12.png'
 import web3 from '../assets/web13.png'
 import toast from "react-hot-toast";
 import { Progress } from "@material-tailwind/react";
+import { Helmet } from "react-helmet-async";
 
 const BidsRequest = () => {
 
@@ -53,6 +54,10 @@ const BidsRequest = () => {
 
     return (
         <>
+            <Helmet>
+                <link rel="icon" type="image/svg+xml" href="../../public/logo_04.png" />
+                <title>Jobi Online Marketplace || Bid Request</title>
+            </Helmet>
             {/* banner */}
             <div className="carousel w-full relative rounded-b-lg md:h-[200px] lg:h-[350px]" style={{ backgroundImage: `url(${banner1})`, backgroundSize: '100% 100%' }}>
                 <div className="carousel-ite container mx-auto  rounded-2xl hero relative w-full overflow-hidden"
@@ -151,7 +156,7 @@ const BidsRequest = () => {
                                             <th>
                                                 {myBid.bidRequestStatus === 'rejected' && ''}
                                                 {myBid.bidRequestStatus === 'in progress' && <div>
-                                                    <Progress style={{fontSize: '11px', height: '25px',}} color="blue" size="sm" value={75} label="Completed" /></div>}
+                                                    <Progress style={{ fontSize: '11px', height: '25px', }} color="blue" size="sm" value={75} label="Completed" /></div>}
                                                 {myBid.bidRequestStatus === 'pending' &&
                                                     <div onClick={() => handleReject(myBid._id)} className="flex flex-col gap-2">
                                                         <button style={{ padding: '0px 0px', background: '#ff4b01' }}

@@ -5,6 +5,7 @@ import banner1 from '../assets/banner-bg-3.png'
 import { Input, Textarea } from "@material-tailwind/react";
 import Swal from 'sweetalert2';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const AddJob = () => {
 
@@ -48,6 +49,10 @@ const AddJob = () => {
 
     return (
         <>
+            <Helmet>
+                <link rel="icon" type="image/svg+xml" href="../../public/fav3.png" />
+                <title>Jobi Online Marketplace || Add Job</title>
+            </Helmet>
             {/* banner */}
             <div className="carousel w-full relative rounded-b-lg md:h-[200px] lg:h-[350px]" style={{ backgroundImage: `url(${banner1})`, backgroundSize: '100% 100%' }}>
                 <div className="carousel-ite container mx-auto  rounded-2xl hero relative w-full overflow-hidden"
