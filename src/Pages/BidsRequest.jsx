@@ -42,9 +42,9 @@ const BidsRequest = () => {
     // handler reject btn
     const handleReject = id => {
 
-        const updateStatus = { bidStatus: 'canceled', bidRequestStatus: 'rejected' }
+        const updateRejectStatus = { bidStatus: 'canceled', bidRequestStatus: 'rejected' }
 
-        axios.patch(`https://online-marketplace-client.vercel.app/bids/${id}`, updateStatus)
+        axios.patch(`https://online-marketplace-client.vercel.app/bids/${id}`, updateRejectStatus)
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
@@ -65,9 +65,9 @@ const BidsRequest = () => {
     // handler accept btn
     const handelAccept = _id => {
 
-        const updateStatus = { bidStatus: 'in progress', bidRequestStatus: 'in progress' }
+        const updateAcceptStatus = { bidStatus: 'in progress', bidRequestStatus: 'in progress' }
 
-        axios.patch(`https://online-marketplace-client.vercel.app/bids/${_id}`, updateStatus)
+        axios.patch(`https://online-marketplace-client.vercel.app/bids/${_id}`, updateAcceptStatus)
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
