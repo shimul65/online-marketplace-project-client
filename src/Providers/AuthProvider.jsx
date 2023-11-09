@@ -12,9 +12,7 @@ const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
 
-
     const [user, setUser] = useState(null);
-
     const [loading, setLoading] = useState(true);
 
     // google login
@@ -22,38 +20,32 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
-
     //github login
     const githubLogin = () => {
         setLoading(true);
         return signInWithPopup(auth, githubProvider)
     }
-
     // register
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
-
     // login
     const login = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
-
     //update profile
     const handleUpdateProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
     };
-
     // observe with state change
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false);
-
             const loggedUser = { email: currentUser?.email || user?.email };
 
             //if user exists then issue a token
@@ -80,11 +72,6 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return signOut(auth)
     }
-
-
-
-
-
 
     const authInfo = {
         createUser,

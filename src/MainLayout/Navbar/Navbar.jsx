@@ -10,12 +10,9 @@ import useAuth from "../../Hook/useAuth";
 import toast from "react-hot-toast";
 import auth from "../../Firebase/firebase.config";
 
-
 const Navbar = () => {
 
-
     const navigate = useNavigate();
-
     const { user, logOut } = useAuth();
 
     const handleLogOut = () => {
@@ -50,8 +47,6 @@ const Navbar = () => {
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen((cur) => !cur);
-
-
 
     return (
         <div className="sticky -top-4 z-50" style={{ backgroundImage: `url(${banner1})`, backgroundSize: '100% 100%' }}>

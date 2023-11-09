@@ -3,6 +3,7 @@ import web1 from '../../assets/web11.png'
 import web2 from '../../assets/web12.png'
 import web3 from '../../assets/web13.png'
 import { BsCurrencyDollar } from "react-icons/bs";
+
 const Job = ({ job, tabIndex }) => {
 
     const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice } = job;

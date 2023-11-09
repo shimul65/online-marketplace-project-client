@@ -12,7 +12,6 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-
 const JobsDetails = () => {
 
     // const navigate = useNavigate();
@@ -36,9 +35,7 @@ const JobsDetails = () => {
     const deadlineFinish = deadline < formattedDate;
 
     const handleBidJob = e => {
-
         e.preventDefault();
-
 
         const form = e.target;
         const buyerEmail = form.buyerEmail.value;
@@ -63,7 +60,6 @@ const JobsDetails = () => {
 
         }
         // console.log(bid);
-
 
         const isExists = Boolean(bids?.find(bid => bid.jobId === _id));
 
@@ -194,7 +190,6 @@ const JobsDetails = () => {
                                 </div>
                                 {/* Bid on the project button */}
                                 {
-
                                     user.email === employerEmail || deadlineFinish
                                         ?
                                         <input type="submit" value='Bid On the Project' className="btn flex justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" disabled />
@@ -218,5 +213,3 @@ const JobsDetails = () => {
 };
 
 export default JobsDetails;
-//
-// user?.email === employerEmail

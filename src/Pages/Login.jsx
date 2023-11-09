@@ -9,9 +9,7 @@ import toast from "react-hot-toast";
 const Login = ({ handler }) => {
 
     const { login } = useAuth();
-
     const navigate = useNavigate();
-
     const location = useLocation();
 
     //dialog box close
@@ -26,16 +24,13 @@ const Login = ({ handler }) => {
         const email = form.get('email');
         const password = form.get('password');
 
-
         //create new user
         login(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-
                 // navigate after log in
                 navigate(location?.state ? location.state : '/');
-
                 toast.success('User Log In Successfully');
             })
             .catch(error => {
@@ -44,17 +39,10 @@ const Login = ({ handler }) => {
                 toast.error(`${errorCode, errorMessage}
                 Please input correct email and password`);
             })
-
     }
 
     return (
         <>
-            {/* <Dialog
-                // size=""
-                open={open}
-                handler={handleOpen}
-                className="bg-transparent shadow-none"
-            > */}
             <div className="card-body bg-white mx-auto my-20 rounded-2xl shadow-2xl border py-8 px-10 md:py-16 md:px-24">
                 <form onSubmit={handleLogin}>
                     <h2 className="text-3xl font-semibold text-center">Hi, Welcome Back!</h2>
@@ -92,7 +80,6 @@ const Login = ({ handler }) => {
                 </div>
                 <p onClick={handle} className="mt-8 text-center">Don’t Have An Account ? <span className="text-[#04a44f] underline font-medium"><Link to='/register'>Register</Link></span></p>
             </div>
-            {/* </Dialog> */}
         </>
     );
 };

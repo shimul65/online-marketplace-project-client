@@ -47,7 +47,6 @@ ul a.active {
     will-change: transform;
 }
 
-
 .job:hover {
     background-size: 105% 105%;
     /* Increase background size on hover */

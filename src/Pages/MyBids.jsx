@@ -3,7 +3,6 @@ import useAuth from "../Hook/useAuth";
 import { useEffect, useState } from "react";
 import banner2 from '../assets/banner-bg-3-0.png'
 import banner1 from '../assets/banner-bg-3.png'
-// import MyPostedJobCard from '../Components/MyPostedJobCard/MyPostedJobCard';
 import { VscChevronRight } from 'react-icons/vsc';
 import { IoCheckmarkDone } from 'react-icons/io5';
 
@@ -13,22 +12,6 @@ import web3 from '../assets/web13.png'
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../Hook/useAxiosSecure";
-
-// bidDeadline
-// biddingPrice
-// buyerEmail
-// categoryName
-// deadline
-// description
-// employerEmail
-// jobId
-// jobTitle
-// : 
-// maximumPrice
-// minimumPrice
-// status
-// _id
-
 
 const MyBids = () => {
 
@@ -42,9 +25,6 @@ const MyBids = () => {
 
         axiosSecure.get(`/bids?buyerEmail=${user?.email}`)
             .then(res => setMyBids(res.data))
-            
-        // axiosSecure.get(`/jobs?employerEmail=${user?.email}`)
-        //     .then(res => setMyPostedJobs(res.data))
 
     }, [axiosSecure, user?.email])
 
@@ -53,7 +33,7 @@ const MyBids = () => {
 
         const updateStatus = { bidStatus: 'complete', bidRequestStatus: 'complete' }
 
-        // send updated data to backend using axios
+        // send updated status to backend using axios
         axios.patch(`http://localhost:5055/bids/${id}`, updateStatus)
             .then(res => {
                 console.log(res.data);
@@ -171,7 +151,8 @@ const MyBids = () => {
                                                     <div className="text-4xl text-green-700 hover:scale-110 duration-300 flex justify-center ease-in-out">
                                                         <IoCheckmarkDone></IoCheckmarkDone></div>}
                                             </th>
-                                        </tr>)
+                                        </tr>
+                                    )
                                 }
                             </tbody>
                         </table>

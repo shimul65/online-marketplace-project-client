@@ -5,7 +5,6 @@ import banner2 from '../assets/banner-bg-3-0.png'
 import banner1 from '../assets/banner-bg-3.png'
 import { VscChevronRight } from 'react-icons/vsc';
 import { IoCloudDone } from 'react-icons/io5';
-
 import web1 from '../assets/web11.png'
 import web2 from '../assets/web12.png'
 import web3 from '../assets/web13.png'
@@ -58,8 +57,6 @@ const BidsRequest = () => {
                 }
             })
     }
-
-
 
     return (
         <>
@@ -179,7 +176,8 @@ const BidsRequest = () => {
                                                         <IoCloudDone></IoCloudDone></div>}
 
                                             </th>
-                                        </tr>)
+                                        </tr>
+                                    )
                                 }
                             </tbody>
                         </table>

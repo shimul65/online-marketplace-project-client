@@ -56,6 +56,7 @@ const JobCategories = () => {
                         </div>
                     </div>
 
+                    {/* implement tabs using this NPM package */}
                     <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                         <TabList>
                             <div className="border border-gray-400 rounded-xl py w-[65%] grid grid-cols-3">

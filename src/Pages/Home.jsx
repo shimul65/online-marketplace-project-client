@@ -6,7 +6,6 @@ import Question from "../Components/Question/Question";
 import Trusted from "../Components/Trusted/Trusted";
 import { Helmet } from "react-helmet-async";
 
-
 const Home = () => {
     return (
         <div>

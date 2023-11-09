@@ -10,10 +10,7 @@ import toast from 'react-hot-toast';
 
 const Register = () => {
 
-   
-
     const { createUser, handleUpdateProfile } = useAuth();
-
     const navigate = useNavigate();
 
     //show password
@@ -27,7 +24,6 @@ const Register = () => {
         const name = form.get('name');
         const photoURL = form.get('photoURL');
         const isAccepted = form.get('terms') === 'on';
-
 
         // password validation check
         if (password.length < 6) {
@@ -48,8 +44,6 @@ const Register = () => {
             return;
         }
 
-
-
         //create new user
         createUser(email, password)
             .then(result => {
@@ -64,18 +58,13 @@ const Register = () => {
                     }).catch((error) => {
                         console.log(error);
                     });
-
-
             })
             .catch(error => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 toast.error(errorCode, errorMessage);
             })
-
     }
-
-
 
     return (
         <>

@@ -10,11 +10,11 @@ import { Helmet } from 'react-helmet-async';
 const AddJob = () => {
 
     const { user } = useAuth();
-
     const navigate = useNavigate();
 
     const handleAddJob = e => {
         e.preventDefault();
+
         const form = e.target;
         const jobTitle = form.title.value;
         const deadline = form.bidDeadline.value;
@@ -129,8 +129,6 @@ const AddJob = () => {
                         </NavLink>
                     </div>
                 </div>
-
-
             </div>
         </>
     );
