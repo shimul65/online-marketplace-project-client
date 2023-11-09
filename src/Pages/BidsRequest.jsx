@@ -173,7 +173,7 @@ const BidsRequest = () => {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td className="hidden mt-10 lg:block ">
+                                                    <td className="hidden mt-10 md:block ">
                                                         <div className="text-xl font-bold text-center ">{myBid?.buyerEmail}</div>
                                                     </td>
                                                     <td className="text-sm md:text-lg font-semibold">

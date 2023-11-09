@@ -14,7 +14,7 @@ const Company = () => {
             </Helmet>
             <div className="container mx-auto" >
                 <div className="text-left mb-16 relative">
-                    <h1 className="text-6xl font-bold ml-2">Top Company</h1>
+                    <h1 className="lg:text-6xl text-5xl text-center md:text-left font-bold ml-2">Top Company</h1>
                     <div className='flex items-center gap-2 text-[#04a44f] absolute md:right-10 md:top-[50%] mt-4 ml-4 md:mt-0 md:ml-0 hover:scale-105 ease-in-out duration-300'>
                         <p className='underline text-lg'>Explore More</p>
                         <div className='text-xl hover:scale-125 hover:rotate-[360deg] ease-in-out duration-500 '>
