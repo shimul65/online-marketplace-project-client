@@ -14,6 +14,7 @@ import Spin from "../Components/Spin/Spin";
 import Loader from "../Components/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import fav4 from '../../public/logo_04.png'
 
 const BidsRequest = () => {
 
@@ -22,7 +23,7 @@ const BidsRequest = () => {
     const axiosSecure = useAxiosSecure();
 
     //get bidsRequest data from server for specific user using tanstackQuery
-    const { data: myBidRequests, isPending, isError, error } = useQuery({
+    const { data: myBidRequests, isPending, isError, error, refetch } = useQuery({
 
         queryKey: ['jobs'],
         queryFn: async () => {
@@ -44,18 +45,42 @@ const BidsRequest = () => {
 
         const updateRejectStatus = { bidStatus: 'canceled', bidRequestStatus: 'rejected' }
 
-        axios.patch(`https://online-marketplace-client.vercel.app/bids/${id}`, updateRejectStatus)
-            .then(res => {
-                console.log(res.data);
-                if (res.data.modifiedCount > 0) {
+        // axios.patch(`https://online-marketplace-client.vercel.app/bids/${id}`, updateRejectStatus)
+        //     .then(res => {
+        //         console.log(res.data);
+        //         if (res.data.modifiedCount > 0) {
+        //             Swal.fire({
+        //                 title: 'Success!',
+        //                 text: 'Bid request reject successfully',
+        //                 icon: 'success',
+        //                 confirmButtonText: 'Cool'
+        //             }).then((result) => {
+        //                 if (result.isConfirmed) {
+        //                     window.location.reload();
+        //                 }
+        //             });
+        //         }
+        //     })
+
+
+        fetch(`https://online-marketplace-client.vercel.app/bids/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updateRejectStatus)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Bid request reject successfully',
+                        text: 'Bid request Reject successfully',
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location.reload();
+                            // window.location.reload();
+                            refetch();
                         }
                     });
                 }
@@ -67,18 +92,41 @@ const BidsRequest = () => {
 
         const updateAcceptStatus = { bidStatus: 'in progress', bidRequestStatus: 'in progress' }
 
-        axios.patch(`https://online-marketplace-client.vercel.app/bids/${_id}`, updateAcceptStatus)
-            .then(res => {
-                console.log(res.data);
-                if (res.data.modifiedCount > 0) {
+        // axios.patch(`https://online-marketplace-client.vercel.app/bids/${_id}`, updateAcceptStatus)
+        //     .then(res => {
+        //         console.log(res.data);
+        //         if (res.data.modifiedCount > 0) {
+        //             Swal.fire({
+        //                 title: 'Success!',
+        //                 text: 'Bid request accept successfully',
+        //                 icon: 'success',
+        //                 confirmButtonText: 'Cool'
+        //             }).then((result) => {
+        //                 if (result.isConfirmed) {
+        //                     window.location.reload();
+        //                 }
+        //             });
+        //         }
+        //     })
+
+        fetch(`https://online-marketplace-client.vercel.app/bids/${_id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updateAcceptStatus)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Bid request accept successfully',
+                        text: 'Bid request Accept successfully',
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location.reload();
+                            // window.location.reload();
+                            refetch();
                         }
                     });
                 }
@@ -88,7 +136,7 @@ const BidsRequest = () => {
     return (
         <>
             <Helmet>
-                <link rel="icon" type="image/svg+xml" href="../../public/logo_04.png" />
+                <link rel="icon" type="image/svg+xml" href={fav4} />
                 <title>Jobi Online Marketplace || Bid Request</title>
             </Helmet>
             {/* banner */}
@@ -97,9 +145,9 @@ const BidsRequest = () => {
                 >
                     <div className="z-10">
                         <div className="flex flex-col my-7 md:my-0 items-center space-y-5 md:space-y-9 md:mb-[85%] lg:mb-[75%]">
-                            <h2 className=" text-3xl lg:text-5xl font-extrabold text-center">Bid Request On My Jobs
+                            <h2 data-aos="zoom-in" className=" text-3xl lg:text-5xl font-extrabold text-center">Bid Request On My Jobs
                             </h2>
-                            <p className="text-sm px-16 md:px-0 lg:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;It provides a clear description of the job&#39;s responsibilities, <br /> qualifications, and other essential details to attract potential candidates&#34;</p>
+                            <p data-aos="zoom-in" className="text-sm px-16 md:px-0 lg:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;It provides a clear description of the job&#39;s responsibilities, <br /> qualifications, and other essential details to attract potential candidates&#34;</p>
                         </div>
                     </div>
                     <div className='mb-1'>
@@ -173,8 +221,8 @@ const BidsRequest = () => {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td className="hidden mt-10 md:block ">
-                                                        <div className="text-xl font-bold text-center ">{myBid?.buyerEmail}</div>
+                                                    <td className=" mt-10 ">
+                                                        <div className="text-xl font-bold text-center">{myBid?.buyerEmail}</div>
                                                     </td>
                                                     <td className="text-sm md:text-lg font-semibold">
                                                         <div>
@@ -196,13 +244,13 @@ const BidsRequest = () => {
                                                     {myBid.bidRequestStatus === 'complete' &&
                                                         <td className="text-sm md:text-lg text-green-500  font-semibold">Completed</td>
                                                     }
-                                                    <th>
+                                                    <td>
                                                         {myBid.bidRequestStatus === 'rejected' && ''}
                                                         {myBid.bidRequestStatus === 'in progress' && <div>
                                                             <Progress style={{ fontSize: '11px', height: '25px', }} color="blue" size="sm" value={75} label="Completed" /></div>}
                                                         {myBid.bidRequestStatus === 'pending' &&
-                                                            <div onClick={() => handleReject(myBid._id)} className="flex flex-col gap-2">
-                                                                <button style={{ padding: '0px 0px', background: '#ff4b01' }}
+                                                            <div className="flex flex-col gap-2">
+                                                                <button onClick={() => handleReject(myBid._id)} style={{ padding: '0px 0px', background: '#ff4b01' }}
                                                                     className="customBtn btn flex justify-center items-center rounded-full font-medium hover:text-black text-xs md:text-lg  border-none" >Reject</button>
 
                                                                 <button onClick={() => handelAccept(myBid._id)} style={{ padding: '0px 2px', }}
@@ -212,7 +260,7 @@ const BidsRequest = () => {
                                                             <div className="text-4xl text-green-700 hover:scale-110 duration-300 flex justify-center ease-in-out">
                                                                 <IoCloudDone></IoCloudDone></div>}
 
-                                                    </th>
+                                                    </td>
                                                 </tr>
                                             )
                                         }

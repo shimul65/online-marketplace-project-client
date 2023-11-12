@@ -9,7 +9,7 @@ const Job = ({ job, tabIndex }) => {
     const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice } = job;
 
     return (
-        <div className="card card-compact border border-gray-300 pt-10 pb-5 shadow-xl hover:bg-[#F8FDE4] cursor-pointer">
+        <div data-aos="zoom-in-down" data-aos-duration='1200' className="card card-compact w-full border border-gray-300 pt-10 pb-5 shadow-xl hover:bg-[#F8FDE4] cursor-pointer">
             <div className='relative'>
                 <figure>
                     {

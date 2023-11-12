@@ -6,6 +6,7 @@ import { Input, Textarea } from "@material-tailwind/react";
 import Swal from 'sweetalert2';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import fav3 from '../../public/fav3.png'
 
 const AddJob = () => {
 
@@ -32,13 +33,16 @@ const AddJob = () => {
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
-                    navigate('/postedJob')
                     Swal.fire({
                         title: 'Success!',
                         text: 'Your Job Added Successfully',
                         icon: 'success',
                         confirmButtonText: 'Cool'
-                    })
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            navigate('/postedJob')
+                        }
+                    });
                 }
             })
     }
@@ -50,7 +54,7 @@ const AddJob = () => {
     return (
         <>
             <Helmet>
-                <link rel="icon" type="image/svg+xml" href="../../public/fav3.png" />
+                <link rel="icon" type="image/svg+xml" href={fav3} />
                 <title>Jobi Online Marketplace || Add Job</title>
             </Helmet>
             {/* banner */}
@@ -59,9 +63,9 @@ const AddJob = () => {
                 >
                     <div className="z-10">
                         <div className="flex flex-col my-7 md:my-0 items-center space-y-5 md:space-y-9 md:mb-[85%] lg:mb-[85%]">
-                            <h2 className=" text-4xl lg:text-6xl font-extrabold text-center">Add Jobs Here
+                            <h2 data-aos="zoom-in" className=" text-4xl lg:text-6xl font-extrabold text-center">Add Jobs Here
                             </h2>
-                            <p className="text-sm px-16 md:px-0 lg:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;Define the position or role you&#39;re looking to fill, <br /> making it easier for potential candidates to understand the job&#39;s&#34;</p>
+                            <p data-aos="zoom-in" className="text-sm px-16 md:px-0 lg:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;Define the position or role you&#39;re looking to fill, <br /> making it easier for potential candidates to understand the job&#39;s&#34;</p>
                         </div>
                     </div>
                     <div className='mb-1'>

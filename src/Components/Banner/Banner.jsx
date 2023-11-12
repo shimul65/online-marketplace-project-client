@@ -13,17 +13,16 @@ import './Banner.css'
 const Banner = () => {
 
 
+
     return (
-        <div className="carousel w-full relative rounded-b-lg mb-5" style={{ backgroundImage: `url(${banner1})`, backgroundSize: '100% 100%' }}>
+        <div className="carousel w-full relative rounded-b-lg mb-5 overflow-hidden" style={{ backgroundImage: `url(${banner1})`, backgroundSize: '100% 100%' }}>
             <div className="carousel-ite container mx-auto  rounded-2xl hero relative w-full overflow-hidden"
             >
                 <div className="z-10">
                     <div className="flex flex-col my-7 md:my-0 items-center space-y-5 md:space-y-9 md:mb-[12%] lg:mb-[8%] ">
-                        <h2 data-aos="fade-down"
-                            data-aos-easing="linear"
-                            data-aos-duration="1500" className=" text-3xl md:text-4xl lg:text-6xl font-extrabold text-center">Find & Hire Experts <br /> for any Job
+                        <h2 data-aos="zoom-in-down" data-aos-duration="1500" className=" text-3xl md:text-4xl lg:text-6xl font-extrabold text-center">Find & Hire Experts <br /> for any Job
                         </h2>
-                        <p className="text-sm px-16 md:px-0 md:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">Jobs & Job search. Find jobs in global. Executive jobs & work.</p>
+                        <p data-aos="zoom-in" className="text-sm px-16 md:px-0 md:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">Jobs & Job search. Find jobs in global. Executive jobs & work.</p>
                         <div className='border p-0 md:p-2 rounded-full md:bg-transparent lg:bg-white bg-white md:w-full flex gap-2 items-center'>
                             <div className='relative '>
                                 <input type="text" placeholder="What are you looking ?"
@@ -48,7 +47,7 @@ const Banner = () => {
                             </div>
                             <button className="customBtn rounded-full border-none text ml-8">Search</button>
                         </div>
-                        <p className='block md:hidden lg:block'>Populer: Design Art Business Video Editing</p>
+                        <p data-aos="zoom-in" className='block md:hidden lg:block'>Populer: Design Art Business Video Editing</p>
                     </div>
                 </div>
                 <div className='mb-1'>

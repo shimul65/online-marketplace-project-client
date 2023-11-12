@@ -5,7 +5,7 @@ import {
     AccordionBody,
 } from "@material-tailwind/react";
 
-const Icon = ({id, open}) => {
+const Icon = ({ id, open }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ const Question = () => {
         <div className="md:mt-20 mb-20">
             <div className=" px-2 mx-2 md:mx-0 md:px-0 lg:pr-20">
                 <div className="text-left mb-16">
-                    <h1 className="lg:text-6xl text-5xl text-center md:text-left font-bold">Questions & Answers</h1>
+                    <h1 data-aos="fade-right" className="lg:text-6xl text-5xl text-center md:text-left font-bold">Questions & Answers</h1>
                 </div>
                 <Accordion className="mb-4" open={open === 1} icon={<Icon id={1} open={open} />} animate={CUSTOM_ANIMATION}>
                     <AccordionHeader onClick={() => handleOpen(1)}>How does the free trial work?</AccordionHeader>

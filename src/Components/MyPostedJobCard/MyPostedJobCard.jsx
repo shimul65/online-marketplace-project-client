@@ -22,17 +22,21 @@ const MyPostedJobCard = ({ job }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-
                 axios.delete(`https://online-marketplace-client.vercel.app/jobs/${_id}`)
                     .then(res => {
                         console.log(res.data);
                         if (res.data.deletedCount > 0) {
-
                             Swal.fire(
                                 'Deleted!',
                                 'Your Posted Job has been deleted.',
                                 'success'
                             )
+                                .then((result) => {
+                                    if (result.isConfirmed) {
+                                        // refetch();
+                                        window.location.reload();
+                                    }
+                                });
                         }
                     })
             }
@@ -40,7 +44,7 @@ const MyPostedJobCard = ({ job }) => {
     }
 
     return (
-        <div className="card card-compact border border-gray-300 pt-10 pb-5 shadow-xl hover:bg-[#F8FDE4] cursor-pointer">
+        <div data-aos="zoom-in-down" data-aos-duration='700' className="card card-compact border border-gray-300 pt-10 pb-5 shadow-xl hover:bg-[#F8FDE4] cursor-pointer">
             <div className='relative'>
                 <figure>
                     {

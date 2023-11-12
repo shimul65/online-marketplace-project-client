@@ -10,8 +10,8 @@ const JobGuides = () => {
     return (
         <div className='md:mb-20'>
             <div className="text-left md:pt-6 mb-16 relative">
-                <h1 className="lg:text-6xl text-5xl text-center md:text-left font-bold ml-5">Job Guides</h1>
-                <div className='flex items-center gap-2 text-[#04a44f] absolute md:right-10 md:top-[50%] mt-4 ml-4 md:mt-0 md:ml-0 hover:scale-105 ease-in-out duration-300'>
+                <h1 data-aos="fade-right" className="lg:text-6xl text-5xl text-center md:text-left font-bold ml-5">Job Guides</h1>
+                <div data-aos="zoom-in" className='flex items-center gap-2 text-[#04a44f] absolute md:right-10 md:top-[50%] mt-4 ml-4 md:mt-0 md:ml-0 hover:scale-105 ease-in-out duration-300'>
                     <p className='underline text-lg'>Explore More</p>
                     <div className='text-xl hover:scale-125 hover:rotate-[360deg] ease-in-out duration-500 '>
                         <VscChevronRight></VscChevronRight>
@@ -19,7 +19,8 @@ const JobGuides = () => {
                 </div>
             </div>
             <div className='flex flex-col mx-2 md:mx-0 md:flex-row justify-around items-center gap-6'>
-                <div className="card card-compact shadow-xl h-[500px] w-full relative overflow-hidden " >
+                <div data-aos="fade-right"
+                    data-aos-duration="800" className="card card-compact shadow-xl h-[500px] w-full relative overflow-hidden " >
                     <div
                         className="absolute inset-0 bg-cover bg-center ease-in-out duration-300 hover:scale-105  "
                         style={{ backgroundImage: `url(${jobGuide1})`, backgroundSize: '100% 100%', }}
@@ -37,7 +38,9 @@ const JobGuides = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card card-compact shadow-xl h-[500px] relative overflow-hidden  w-full " >
+                <div data-aos="zoom-in-down"
+                data-aos-duration='800'
+                    className="card card-compact shadow-xl h-[500px] relative overflow-hidden  w-full " >
                     <div
                         className="absolute inset-0 bg-cover bg-center ease-in-out duration-300 hover:scale-105  "
                         style={{ backgroundImage: `url(${jobGuide2})`, backgroundSize: '100% 100%', }}
@@ -55,7 +58,8 @@ const JobGuides = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card card-compact shadow-xl h-[500px] relative overflow-hidden  w-full " >
+                <div data-aos="fade-left"
+                    data-aos-duration="800" className="card card-compact shadow-xl h-[500px] relative overflow-hidden  w-full " >
                     <div
                         className="absolute inset-0 bg-cover bg-center ease-in-out duration-300 hover:scale-105  "
                         style={{ backgroundImage: `url(${jobGuide1})`, backgroundSize: '100% 100%', }}

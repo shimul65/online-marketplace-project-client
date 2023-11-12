@@ -11,18 +11,40 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../Hook/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../Components/Loader/Loader";
 
 const JobsDetails = () => {
 
     // const navigate = useNavigate();
     const job = useLoaderData();
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
+
     const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice, categoryName, employerEmail } = job;
 
-    const [bids, setBids] = useState([]);
+    // const [bids, setBids] = useState([]);
+    // axios.get(`https://online-marketplace-client.vercel.app/bids?buyerEmail=${user?.email}`)
+    //     .then(res => setBids(res.data))
 
-    axios.get(`https://online-marketplace-client.vercel.app/bids?buyerEmail=${user?.email}`)
-        .then(res => setBids(res.data))
+
+
+    //get bidsRequest data from server for specific user using tanstackQuery
+    const { data: bids, isPending, isError, error } = useQuery({
+
+        queryKey: ['bids'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/bids?buyerEmail=${user?.email}`)
+            return res.data;
+        }
+    })
+    if (isPending) {
+        return <Loader></Loader>
+    }
+    if (isError) {
+        return <span className="text-center text-2xl font-bold text-red-500 py-5">Error : {error.message}</span>
+    }
 
 
     const currentDate = new Date();
@@ -61,7 +83,12 @@ const JobsDetails = () => {
         }
         // console.log(bid);
 
-        const isExists = Boolean(bids?.find(bid => bid.jobId === _id));
+        const isExists = Boolean(bids?.find(bid => bid.jobId == _id));
+        // const isExists = bids?.find(bid => bid.jobId == _id);
+
+        console.log(_id);
+        console.log(bids);
+        console.log(isExists);
 
         if (isExists) {
             return toast.error('You have already been bid to this job.', {

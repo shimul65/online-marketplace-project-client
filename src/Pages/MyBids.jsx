@@ -13,6 +13,7 @@ import Spin from "../Components/Spin/Spin";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../Components/Loader/Loader";
 import Swal from "sweetalert2";
+import fav2 from  '../../public/fav2.jpg'
 
 const MyBids = () => {
 
@@ -21,7 +22,7 @@ const MyBids = () => {
     const axiosSecure = useAxiosSecure();
 
     //get bidsRequest data from server for specific user using tanstackQuery
-    const { data: myBids, isPending, isError, error } = useQuery({
+    const { data: myBids, isPending, isError, error, refetch } = useQuery({
 
         queryKey: ['jobs'],
         queryFn: async () => {
@@ -53,7 +54,7 @@ const MyBids = () => {
                         confirmButtonText: 'Cool'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location.reload();
+                            refetch();
                         }
                     });
                 }
@@ -64,7 +65,7 @@ const MyBids = () => {
     return (
         <>
             <Helmet>
-                <link rel="icon" type="image/svg+xml" href="../../public/fav2.jpg" />
+                <link rel="icon" type="image/svg+xml" href={fav2} />
                 <title>Jobi Online Marketplace || Bids</title>
             </Helmet>
             {/* banner */}
@@ -73,9 +74,9 @@ const MyBids = () => {
                 >
                     <div className="z-10">
                         <div className="flex flex-col my-7 md:my-0 items-center space-y-5 md:space-y-9 md:mb-[85%] lg:mb-[75%]">
-                            <h2 className=" text-4xl lg:text-5xl font-extrabold text-center">My Bidding Jobs
+                            <h2 data-aos="zoom-in" className=" text-4xl lg:text-5xl font-extrabold text-center">My Bidding Jobs
                             </h2>
-                            <p className="text-sm px-16 md:px-0 lg:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;It provides a clear description of the job&#39;s responsibilities, <br /> qualifications, and other essential details to attract potential candidates&#34;</p>
+                            <p data-aos="zoom-in" className="text-sm px-16 md:px-0 lg:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;It provides a clear description of the job&#39;s responsibilities, <br /> qualifications, and other essential details to attract potential candidates&#34;</p>
                         </div>
                     </div>
                     <div className='mb-1'>

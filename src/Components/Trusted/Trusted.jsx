@@ -46,7 +46,7 @@ const Trusted = () => {
     return (
         <div className=" mx-2 overflow-hidden">
             <div className=''>
-                <p className='text-center pt-5'>Trusted by the world’s best</p>
+                <p data-aos="zoom-in" className='text-center pt-5'>Trusted by the world’s best</p>
             </div>
             <Slider {...settings}>
                 <div className=" p-10 rounded-3xl">

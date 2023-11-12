@@ -2,9 +2,11 @@ import { Outlet } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { Toaster } from "react-hot-toast";
+import useAOSInit from "../../Hook/useAOSInit";
 
 
 const Root = () => {
+    useAOSInit();
     return (
         <div>
             <Navbar></Navbar>

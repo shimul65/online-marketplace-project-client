@@ -5,19 +5,20 @@ import JobGuides from "../Components/JobGuides/JobGuides";
 import Question from "../Components/Question/Question";
 import Trusted from "../Components/Trusted/Trusted";
 import { Helmet } from "react-helmet-async";
+import loader from '../assets/loader.svg'
 
 const Home = () => {
     return (
-        <div>
+        <div className="overflow-hidden">
             <Helmet>
-                <link rel="icon" type="image/svg+xml" href="../../public/loader.svg" />
+                <link rel="icon" type="image/svg+xml" href={loader} />
             </Helmet>
             <Banner></Banner>
             <div className="container mx-auto">
                 <Trusted></Trusted>
             </div>
             <JobCategories></JobCategories>
-            <div className="container mx-auto">
+            <div className="container mx-auto ">
                 <JobGuides></JobGuides>
             </div>
             <Company></Company>
