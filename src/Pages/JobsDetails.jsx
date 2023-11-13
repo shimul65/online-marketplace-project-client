@@ -9,13 +9,17 @@ import web3 from '../assets/web13.png'
 import { Input } from "@material-tailwind/react";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../Components/Loader/Loader";
 
 const JobsDetails = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     // const navigate = useNavigate();
     const job = useLoaderData();
@@ -139,9 +143,9 @@ const JobsDetails = () => {
                 >
                     <div className="z-10">
                         <div className="flex flex-col my-7 md:my-0 items-center space-y-5 md:space-y-9 md:mb-[85%] lg:mb-[100%]">
-                            <h2 className=" text-4xl lg:text-6xl font-extrabold text-center">Job Details
+                            <h2 data-aos="zoom-in" className=" text-4xl lg:text-6xl font-extrabold text-center">Job Details
                             </h2>
-                            <p className="text-sm px-16 md:px-0 md:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">Get & Bid Your Desire Jobs Here</p>
+                            <p data-aos="zoom-in" className="text-sm px-16 md:px-0 md:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">Get & Bid Your Desire Jobs Here</p>
                         </div>
                     </div>
                     <div className='mb-1'>
@@ -194,7 +198,7 @@ const JobsDetails = () => {
                     </div>
                     {/*job bidding section */}
                     <div className=" flex-1 shadow-xl py-8 rounded-2xl  border border-gray-300">
-                        <h2 className="text-3xl mb-10 md:text-4xl font-bold text-center">Place Your Bid : </h2>
+                        <h2 data-aos="fade-down" className="text-3xl mb-10 md:text-4xl font-bold text-center">Place Your Bid : </h2>
                         <div className="mx-3">
                             <form onSubmit={handleBidJob}>
                                 {/* form row */}

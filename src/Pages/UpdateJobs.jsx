@@ -4,8 +4,13 @@ import banner1 from '../assets/banner-bg-3.png'
 import { Input, Textarea } from "@material-tailwind/react";
 import Swal from 'sweetalert2';
 import { NavLink, useLoaderData, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const UpdateJobs = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const job = useLoaderData();
     const { _id, jobTitle, deadline, description, minimumPrice, maximumPrice, categoryName, employerEmail } = job;
@@ -55,9 +60,9 @@ const UpdateJobs = () => {
                 >
                     <div className="z-10">
                         <div className="flex flex-col my-7 md:my-0 items-center space-y-5 md:space-y-9 md:mb-[85%] lg:mb-[85%]">
-                            <h2 className=" text-4xl lg:text-5xl font-extrabold text-center"> Update Your Posted Job
+                            <h2 data-aos='zoom-in' className=" text-4xl lg:text-5xl font-extrabold text-center"> Update Your Posted Job
                             </h2>
-                            <p className="text-sm px-16 md:px-0 lg:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;Define the position or role you&#39;re looking to fill, <br /> making it easier for potential candidates to understand the job&#39;s&#34;</p>
+                            <p data-aos='zoom-in' className="text-sm px-16 md:px-0 lg:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;Define the position or role you&#39;re looking to fill, <br /> making it easier for potential candidates to understand the job&#39;s&#34;</p>
                         </div>
                     </div>
                     <div className='mb-1'>
@@ -70,7 +75,7 @@ const UpdateJobs = () => {
             <div className='md:bg-[#eff6f3] pt-20 pb-52'>
                 <div className="container mx-auto" >
                     <div className=" flex-1 shadow-xl py-16 rounded-2xl  border border-gray-300">
-                        <h2 className="text-3xl mb-10 md:text-4xl font-bold text-center">Update Jobs : </h2>
+                        <h2 data-aos='fade-down' className="text-3xl mb-10 md:text-4xl font-bold text-center">Update Jobs : </h2>
                         <div className="mx-4 md:mx-16 lg:mx-32">
                             <form onSubmit={handleUpdateJob} className='space-y-10'>
                                 {/* form row */}
@@ -113,7 +118,7 @@ const UpdateJobs = () => {
                                         <Textarea name='description' defaultValue={description} color="green" label="Job Description" />
                                     </div>
                                 </div>
-                                <input type="submit"  value='Update Job' className="customBtn flex cursor-pointer justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
+                                <input type="submit" value='Update Job' className="customBtn flex cursor-pointer justify-center items-center h-14  w-1/2 rounded-full mx-auto text-xs md:text-xl  border-none" />
                             </form>
                         </div>
                     </div>

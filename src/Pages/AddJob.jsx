@@ -83,7 +83,7 @@ const AddJob = () => {
             <div className='md:bg-[#eff6f3] pt-20 pb-52'>
                 <div className="container mx-auto" >
                     <div className=" flex-1 shadow-xl py-16 rounded-2xl  border border-gray-300">
-                        <h2 className="text-3xl mb-10 md:text-4xl font-bold text-center">Add Your Jobs : </h2>
+                        <h2 data-aos='fade-down' className="text-3xl mb-10 md:text-4xl font-bold text-center">Add Your Jobs : </h2>
                         <div className="mx-4 md:mx-16 lg:mx-32">
                             <form onSubmit={handleAddJob} className='space-y-10'>
                                 {/* form row */}
