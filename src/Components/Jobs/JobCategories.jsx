@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../Loader/Loader";
 import loader from '../../assets/loader.svg'
+import { useEffect } from "react";
 // import useAOSInit from "../../Hook/useAOSInit";
 // import AOS from 'aos';
 // import 'aos/dist/aos.css';
@@ -14,6 +15,10 @@ import loader from '../../assets/loader.svg'
 
 
 const JobCategories = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const [tabIndex, setTabIndex] = useState(0);
 

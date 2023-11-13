@@ -15,8 +15,13 @@ import Loader from "../Components/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import fav4 from '../../public/logo_04.png'
+import { useEffect } from "react";
 
 const BidsRequest = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     // custom hook
     const { user } = useAuth();
@@ -160,8 +165,8 @@ const BidsRequest = () => {
 
             <div className='md:bg-[#eff6f3] border '>
                 <div className="text-left mb-10 relative container mx-auto pt-6 md:pt-16">
-                    <h1 className=" text-3xl md:text-4xl font-bold ml-2">Bid Requests :</h1>
-                    <p className='text-lg md:text-xl font-medium ml-2 mt-5'>Employer Email: <span className='text-[#04a44f] text-xl md:text-2xl font-bold'>{user?.email}</span></p>
+                    <h1 data-aos="zoom-in" className=" text-3xl md:text-4xl font-bold ml-2">Bid Requests :</h1>
+                    <p data-aos="zoom-in" className='text-lg md:text-xl font-medium ml-2 mt-5'>Employer Email: <span className='text-[#04a44f] text-xl md:text-2xl font-bold'>{user?.email}</span></p>
                     <div className='flex items-center gap-2 text-[#04a44f] absolute md:right-10 md:top-[50%] mt-4 ml-4 md:mt-0 md:ml-0 hover:scale-105 ease-in-out duration-300 '>
                         <p className='underline text-lg '>Explore More</p>
                         <div className='text-xl hover:scale-125 hover:rotate-[360deg] ease-in-out duration-500 '>

@@ -3,6 +3,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { Toaster } from "react-hot-toast";
 import useAOSInit from "../../Hook/useAOSInit";
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 
 
 const Root = () => {
@@ -14,6 +15,7 @@ const Root = () => {
             </div>
             <Outlet></Outlet>
             <Footer></Footer>
+            <ScrollToTop></ScrollToTop>
             <Toaster></Toaster>
         </div>
     );

@@ -64,7 +64,8 @@ const Navbar = () => {
                     </div>
                     <Link to='/' ><img className='w-[150px]' src={logo} alt="" /></Link>
                 </div>
-                <div data-aos="fade-down" data-aos-duration='700' className="navbar-center hidden lg:flex">
+                <div data-aos="fade-down" data-aos-duration='700'
+                    data-aos-offset="0" className="navbar-center hidden lg:flex">
                     <ul className="flex justify-center items-center gap-6 px-1">
                         {navLinks}
                     </ul>

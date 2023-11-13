@@ -6,8 +6,14 @@ import Question from "../Components/Question/Question";
 import Trusted from "../Components/Trusted/Trusted";
 import { Helmet } from "react-helmet-async";
 import loader from '../assets/loader.svg'
+import { useEffect } from "react";
 
 const Home = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <div className="overflow-hidden">
             <Helmet>

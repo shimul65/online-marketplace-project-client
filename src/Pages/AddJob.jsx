@@ -7,8 +7,13 @@ import Swal from 'sweetalert2';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import fav3 from '../../public/fav3.png'
+import { useEffect } from 'react';
 
 const AddJob = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const { user } = useAuth();
     const navigate = useNavigate();

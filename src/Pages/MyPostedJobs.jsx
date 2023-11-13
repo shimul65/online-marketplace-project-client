@@ -10,8 +10,13 @@ import Loader from '../Components/Loader/Loader';
 import { useQuery } from "@tanstack/react-query";
 import Spin from '../Components/Spin/Spin';
 import fav4 from '../../public/fav4.jpg'
+import { useEffect } from 'react';
 
 const MyPostedJobs = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     // custom hook
     const { user } = useAuth();
@@ -45,9 +50,9 @@ const MyPostedJobs = () => {
                 >
                     <div className="z-10">
                         <div className="flex flex-col my-7 md:my-0 items-center space-y-5 md:space-y-9 md:mb-[85%] lg:mb-[75%]">
-                            <h2 className=" text-4xl lg:text-5xl font-extrabold text-center">Your Posted Jobs
+                            <h2 data-aos="zoom-in" className=" text-4xl lg:text-5xl font-extrabold text-center">Your Posted Jobs
                             </h2>
-                            <p className="text-sm px-16 md:px-0 lg:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;It provides a clear description of the job&#39;s responsibilities, <br /> qualifications, and other essential details to attract potential candidates&#34;</p>
+                            <p data-aos="zoom-in" className="text-sm px-16 md:px-0 lg:text-lg font-medium text-center w-full md:w-[250px] lg:w-full">&#34;It provides a clear description of the job&#39;s responsibilities, <br /> qualifications, and other essential details to attract potential candidates&#34;</p>
                         </div>
                     </div>
                     <div className='mb-1'>
